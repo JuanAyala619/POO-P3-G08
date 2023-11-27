@@ -8,3 +8,5 @@ Integrantes:
 - William Mayorga
 - Cristhian Bastidas
 - Juan Fernández
+
+### Diagrama de Clases (UML):
