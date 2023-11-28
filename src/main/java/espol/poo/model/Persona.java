@@ -2,7 +2,7 @@ package espol.poo.model;
 
 import java.util.ArrayList;
 
-public class Persona {
+public abstract class Persona {
     private String ruc;
     private String nombre;
     private String telefono;
