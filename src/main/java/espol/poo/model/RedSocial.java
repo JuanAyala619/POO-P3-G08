@@ -13,10 +13,19 @@ public class RedSocial {
         this.enlace = enlace;
     }
     
+    @Override
+    public boolean equals(Object o){
+        RedSocial r = (RedSocial)o;
+        if(this.getTipo().equals(r.getTipo()))
+            return true;
+        else
+            return false;
+    }
+    
     //Metodo toString
     @Override
     public String toString() {
-        return tipo.toString();
+        return "\n\t" + tipo.toString() + "\n\t\tUsuario: "+ usuario + "\n\t\tEnlace: " + enlace;
     }
     
     // Getter y Setter para 'tipo'
