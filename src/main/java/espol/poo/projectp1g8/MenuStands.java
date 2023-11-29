@@ -5,5 +5,6 @@ import espol.poo.model.*;
 
 public class MenuStands {
     static void menu(){
+        
     }
 }
