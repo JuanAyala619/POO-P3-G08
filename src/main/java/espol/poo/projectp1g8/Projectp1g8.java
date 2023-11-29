@@ -24,7 +24,7 @@ public class Projectp1g8 {
                                4. Administracion de stands
                                5. Salir""");
             System.out.print("Ingrese el numero de opcion: ");
-            opcion = sc.nextLine();
+            opcion = sc.nextLine() + " ";
             System.out.println();
             
             switch (opcion.charAt(0)) {

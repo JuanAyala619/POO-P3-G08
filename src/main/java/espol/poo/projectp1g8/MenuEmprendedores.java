@@ -25,7 +25,7 @@ public class MenuEmprendedores {
                                2. Editar emprendedor
                                3. Regresar""");
             System.out.print("Ingrese el numero de opcion: ");
-            opcion = sc.nextLine();
+            opcion = sc.nextLine() + " ";
             System.out.println();
             switch (opcion.charAt(0)) {
                 case '1' -> {
@@ -69,7 +69,7 @@ public class MenuEmprendedores {
                         System.out.println("Tiene cuenta de " + t +"?");
                         System.out.println("Si: 1      No: 2");
                         System.out.print("Ingrese numero de opcion: ");
-                        opcion = sc.nextLine();
+                        opcion = sc.nextLine() + " ";
                         if(opcion.charAt(0) == '1'){
                             System.out.print("Ingrese nombre de usuario: ");
                             String user = sc.nextLine();
