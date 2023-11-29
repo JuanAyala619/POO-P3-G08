@@ -1,6 +1,4 @@
-# POOProjectP1
-Proyecto de Primer Parcial - Programacaión Orientada a Objetos
-
+# POO - Proyecto de Primer Parcial
 
 ### Grupo 8
 
