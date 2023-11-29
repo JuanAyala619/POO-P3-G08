@@ -1,26 +1,25 @@
 package espol.poo.model;
 import java.util.ArrayList;
 
+
 public class Auspiciante extends Persona{
-  private ArrayList<sectores> lstTipoSectores;
-  private ArrayList<descripcionServicios> lstDscServicios;
+  private ArrayList<TipoSectores> lstTipoSectores;
 
   public Auspiciante(String ruc, String nombre, String telefono, String email, String direccion, String sitioWeb, String personaResponsable){
     super(ruc, nombre, telefono, email, direccion, sitioWeb, personaResponsable);
-    this.lstTipoSectores = new ArrayList<sectores>();
-    this.lstDscServicios = new ArrayList<descripcionServicios>();
+    this.lstTipoSectores = new ArrayList<TipoSectores>();
   }
 
   public String toString(){
     return super.toString();
   }
 
-  public Array getLstTipoSectores(){
+  public ArrayList getLstTipoSectores(){
     return this.lstTipoSectores;
   }
-
-  public Array getLstDscServicios(){
-    return this.lstDscServicios;
+  
+  public void agregarSectores(){
+      
   }
   
 }
