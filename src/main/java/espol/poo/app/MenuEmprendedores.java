@@ -1,8 +1,8 @@
-package espol.poo.projectp1g8;
+package espol.poo.app;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import espol.poo.model.*;
+import espol.poo.models.*;
 
 public class MenuEmprendedores {
     static void menu(){
@@ -12,7 +12,7 @@ public class MenuEmprendedores {
         do{
             System.out.println("Emprendedores registrados actualmente:");
             //For para recorrer la lista de emprendedores y mostrar sus datos
-            for(Emprendedor e: Projectp1g8.listaEmprendedores){
+            for(Emprendedor e: App.listaEmprendedores){
                 System.out.println("Cedula/RUC: " + e.getRuc());
                 System.out.println("Nombre: " + e.getNombre());
                 System.out.println("Telefono: " + e.getTelefono());
@@ -36,10 +36,10 @@ public class MenuEmprendedores {
                     do{
                         System.out.println("Ingrese cedula o RUC:");
                         ruc = sc.nextLine();
-                        if(Projectp1g8.buscarPersona(ruc) != null){
+                        if(App.buscarPersona(ruc) != null){
                             System.out.println("El RUC o Cedula ingresado ya se encuentra registrado en el sistema, por favor, ingrese uno nuevo.");
                         }
-                    }while(Projectp1g8.buscarPersona(ruc) != null);
+                    }while(App.buscarPersona(ruc) != null);
                     System.out.println("Ingrese el nombre:");
                     String nombre = sc.nextLine();
 
@@ -61,7 +61,7 @@ public class MenuEmprendedores {
                     System.out.println("Ingrese la descripción de servicios:");
                     String descripcionServicios = sc.nextLine();
                     
-                    Projectp1g8.listaEmprendedores.add(new Emprendedor(ruc, nombre, telefono, email, direccion, sitioWeb, personaResponsable, descripcionServicios));
+                    App.listaEmprendedores.add(new Emprendedor(ruc, nombre, telefono, email, direccion, sitioWeb, personaResponsable, descripcionServicios));
                     
                     //Agragar una red social
                     for(TipoRedSocial t: TipoRedSocial.values()){
@@ -75,7 +75,7 @@ public class MenuEmprendedores {
                             String user = sc.nextLine();
                             System.out.print("Ingrese el link de su usuario: ");
                             String enlace = sc.nextLine();
-                            Projectp1g8.buscarPersona(ruc).agregarRedSocial(t.toString(), user, enlace);
+                            App.buscarPersona(ruc).agregarRedSocial(t.toString(), user, enlace);
                         }
                         if(opcion.charAt(0) != '1' && opcion.charAt(0) != '2'){
                             System.out.println("Opcion no valida, por favor, ingrese un numero del 1 al 2");
@@ -96,5 +96,7 @@ public class MenuEmprendedores {
             }
             // Código para editar emprendedor
                     }while(opcion.charAt(0) != '3');
+
+        sc.close();
     }
 }

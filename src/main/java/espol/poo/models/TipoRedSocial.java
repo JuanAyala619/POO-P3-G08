@@ -1,4 +1,4 @@
-package espol.poo.model;
+package espol.poo.models;
 
 public enum TipoRedSocial {
     //Parametros

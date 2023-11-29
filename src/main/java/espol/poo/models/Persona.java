@@ -1,4 +1,4 @@
-package espol.poo.model;
+package espol.poo.models;
 
 import java.util.ArrayList;
 

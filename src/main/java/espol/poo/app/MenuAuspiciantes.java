@@ -1,13 +1,12 @@
-package espol.poo.projectp1g8;
-import espol.poo.model.*;
-import espol.poo.model.*;
+package espol.poo.app;
+import espol.poo.models.*;
 import java.util.Scanner;
 
 public class MenuAuspiciantes {
     static void menu(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Auspiciantes registrados: ");
-        for (Auspiciante a: Projectp1g8.listaAuspiciantes){
+        for (Auspiciante a: App.listaAuspiciantes){
             System.out.println(a.getRuc());
             System.out.println(a.getNombre());
             System.out.println(a.getTelefono());
@@ -34,7 +33,7 @@ public class MenuAuspiciantes {
             switch (opcion.charAt(0)) {
                 case '1':
                     // Código para Registrar Auspiciantes
-                    registrarAuspiciante();
+                    registrarAuspiciante(sc);
                     break;
                 case '2':
                     // Código para Editar Auspiciantes
@@ -53,10 +52,11 @@ public class MenuAuspiciantes {
             }
         }while(opcion.charAt(0) != '4');
         System.out.println("Volviendo al menú principal.....\n");
+        sc.close();
     }
     
-    static void registrarAuspiciante(){
-        Scanner sc = new Scanner(System.in);
+    static void registrarAuspiciante(Scanner sc){
+
         System.out.println("Ingrese el ruc del auspiciante: ");
         String ruc = sc.nextLine();
         sc.next();
