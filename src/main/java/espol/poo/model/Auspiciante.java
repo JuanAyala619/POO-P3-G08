@@ -19,7 +19,7 @@ public class Auspiciante extends Persona{
   }
   
   public void agregarSectores(){
-      
+      a
   }
   
 }
