@@ -13,7 +13,7 @@ public class Auspiciante extends Persona{
   }
 
   public String toString(){
-    return super.toString();
+    return super.toString() + lstTipoSectores + "\n";
   }
 
   public ArrayList<TipoSectores> getLstTipoSectores(){
@@ -30,7 +30,5 @@ public class Auspiciante extends Persona{
     }else if(opcion == 4){
         this.lstTipoSectores.add(TipoSectores.VESTIMENTA);
     }
-    
   }
-  
 }

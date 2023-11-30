@@ -62,9 +62,18 @@ public class App {
     
     public static void agregarEmprendedores(){
         listaEmprendedores.add(new Emprendedor("1798285937001", "Tienda de Pepe", "0948652474", "tpepe@gmail.com", "Urbanización Los Dos Caminos", "www.tiendapepe.com.ec", "Pepe", "Venta de articulos varios"));
+        listaEmprendedores.get(0).agregarRedSocial("Twitter", "Pepe", "www.Twitter/pepe");
+        listaEmprendedores.get(0).agregarRedSocial("Pinterest", "Pepe", "www.Pinterest/pepe");
+        
         listaEmprendedores.add(new Emprendedor("1156183215484", "Super Papeleria", "0995685471", "superpapeleria@gmail.com", "San Marcos, A, El Matacho", "www.superpapel.com.ec", "Maria", "Venta de articulos escolares"));
+        listaEmprendedores.get(1).agregarRedSocial("TikTok", "SPapel", "www.TikTok/spapel");
+        listaEmprendedores.get(1).agregarRedSocial("LinkedIn", "SPapel", "www.LinkedIn/spapel");
+        
         listaEmprendedores.add(new Emprendedor("1745865631877", "Pasteles del chino", "0985632685", "pasteleschino@gmail.com", "Centro Comercial Ctro Com Euro, Piso PB, Local 6-7-8-9", "www.pasteles.com.ec", "El Chino", "Venta de pasteles"));
+        listaEmprendedores.get(2).agregarRedSocial("LinkedIn", "pchino", "www.LinkedIn/pchino");
+                
         listaEmprendedores.add(new Emprendedor("1456852584174", "Tacos don Jose", "0958714526", "tacostacos@gmail.com", "Cl. 20 Y 21, CC El Gran Muro, 2", "www.tacostacos.com.ec", "Jose", "Venta de tacos"));
+        listaEmprendedores.get(3).agregarRedSocial("Pinterest", "tjose", "www.Pinterest/tjose");
     }
     
     public static void agregarAuspiciantes(){
@@ -77,5 +86,6 @@ public class App {
     public static void agregarFerias(){
         
     }
+    
     
 }
