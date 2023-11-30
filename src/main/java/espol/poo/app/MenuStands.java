@@ -1,7 +1,7 @@
 
-package espol.poo.projectp1g8;
+package espol.poo.app;
 
-import espol.poo.model.*;
+import espol.poo.models.*;
 
 public class MenuStands {
     static void menu(){

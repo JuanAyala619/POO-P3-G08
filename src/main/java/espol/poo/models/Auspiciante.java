@@ -1,4 +1,4 @@
-package espol.poo.model;
+package espol.poo.models;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class Auspiciante extends Persona{
     return super.toString() + lstTipoSectores + "\n";
   }
 
-  public ArrayList getLstTipoSectores(){
+  public ArrayList<TipoSectores> getLstTipoSectores(){
     return this.lstTipoSectores;
   }
   

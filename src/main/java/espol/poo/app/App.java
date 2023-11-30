@@ -1,10 +1,10 @@
-package espol.poo.projectp1g8;
+package espol.poo.app;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import espol.poo.model.*;
+import espol.poo.models.*;
 
-public class Projectp1g8 {
+public class App {
     public static ArrayList<Emprendedor> listaEmprendedores = new ArrayList<>();
     public static ArrayList<Auspiciante> listaAuspiciantes = new ArrayList<>();
     //public static ArrayList<Feria> listaFerias = new ArrayList<>();
