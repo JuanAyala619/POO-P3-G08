@@ -7,7 +7,7 @@ import espol.poo.models.*;
 public class App {
     public static ArrayList<Emprendedor> listaEmprendedores = new ArrayList<>();
     public static ArrayList<Auspiciante> listaAuspiciantes = new ArrayList<>();
-    //public static ArrayList<Feria> listaFerias = new ArrayList<>();
+    public static ArrayList<Feria> listaFerias = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -20,7 +20,7 @@ public class App {
             System.out.println("""
                                1. Administracion de ferias
                                2. Administracion de emprendedores
-                               3. Sdministracion de auspiciantes
+                               3. Administracion de auspiciantes
                                4. Administracion de stands
                                5. Salir""");
             System.out.print("Ingrese el numero de opcion: ");
@@ -58,6 +58,17 @@ public class App {
             }
         }
         return p;
+    }
+    
+     public static Feria buscarFeria(int codigo){
+        Feria f = null;
+        for(int i=0; i<listaFerias.size();i++){
+            int cf =listaFerias.get(i).getCodigo(); 
+            if(cf == codigo){
+                f = listaFerias.get(i);
+            }
+        }
+        return f;
     }
     
     public static void agregarEmprendedores(){
