@@ -20,6 +20,10 @@ public class Auspiciante extends Persona{
     return this.lstTipoSectores;
   }
   
+  public void borrarSectores(){
+      this.lstTipoSectores = new ArrayList<TipoSectores>();
+  }
+  
   public void agregarSectores(int opcion){
     if(opcion == 1){
         this.lstTipoSectores.add(TipoSectores.ALIMENTACION);
