@@ -328,7 +328,7 @@ public class MenuAuspiciantes {
             cod_feria = sc.nextInt();
             sc.nextLine();
             if (App.buscarFeria(cod_feria) == null) {
-                System.out.println("El codigo de feria ingresado no pertenese a ningun auspiciante registrado");
+                System.out.println("El codigo de feria ingresado no pertenese a ninguna feria registrada");
             }
         } while (App.buscarFeria(cod_feria) == null);
 
