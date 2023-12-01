@@ -5,10 +5,10 @@ import java.util.Scanner;
 import espol.poo.models.*;
 
 public class App {
+    public static ArrayList<Feria> listaFerias = new ArrayList<>();
     public static ArrayList<Emprendedor> listaEmprendedores = new ArrayList<>();
     public static ArrayList<Auspiciante> listaAuspiciantes = new ArrayList<>();
-    //public static ArrayList<Feria> listaFerias = new ArrayList<>();
-
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String opcion;
