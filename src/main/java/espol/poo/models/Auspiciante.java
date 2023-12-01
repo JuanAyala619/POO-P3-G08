@@ -13,7 +13,7 @@ public class Auspiciante extends Persona {
   }
 
   public String toString() {
-    return super.toString() + lstTipoSectores + "\n";
+    return super.toString() + "Sectores: " + lstTipoSectores + "\n";
   }
 
   public ArrayList<TipoSectores> getLstTipoSectores() {
