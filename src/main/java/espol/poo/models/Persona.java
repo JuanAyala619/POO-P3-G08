@@ -11,10 +11,10 @@ public abstract class Persona {
     private String sitioWeb;
     private String personaResponsable;
     private ArrayList<RedSocial> redesSociales;
-    
+
     // Constructor con todos los parámetros menos redesSociales
     public Persona(String ruc, String nombre, String telefono, String email,
-                   String direccion, String sitioWeb, String personaResponsable) {
+            String direccion, String sitioWeb, String personaResponsable) {
         this.ruc = ruc;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -24,8 +24,8 @@ public abstract class Persona {
         this.personaResponsable = personaResponsable;
         redesSociales = new ArrayList<RedSocial>();
     }
-    
-    public void agregarRedSocial(String tipo, String usuario, String enlace){
+
+    public void agregarRedSocial(String tipo, String usuario, String enlace) {
         TipoRedSocial red = TipoRedSocial.Twitter;
         if (tipo.equals("Twitter")) {
             red = TipoRedSocial.Twitter;
@@ -41,15 +41,15 @@ public abstract class Persona {
             red = TipoRedSocial.LinkedIn;
         } else if (tipo.equals("Pinterest")) {
             red = TipoRedSocial.Pinterest;
-        } else {}
+        } else {
+        }
         redesSociales.add(new RedSocial(red, usuario, enlace));
     }
-    
-    
-    //Metodo toString
+
+    // Metodo toString
     @Override
     public String toString() {
-        return  "Nombre: " + nombre + "\n" +
+        return "Nombre: " + nombre + "\n" +
                 "Ruc/Cedula: " + ruc + "\n" +
                 "Telefono: " + telefono + "\n" +
                 "Email: " + email + "\n" +
@@ -58,7 +58,7 @@ public abstract class Persona {
                 "PersonaResponsable: " + personaResponsable + "\n" +
                 "Redes Sociales: " + redesSociales + "\n";
     }
-    
+
     // Getter y Setter para 'ruc'
     public String getRuc() {
         return ruc;

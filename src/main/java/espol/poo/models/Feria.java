@@ -107,39 +107,39 @@ public class Feria {
         return "";
     }
 
-    public void asignarAuspiciante(Auspiciante auspiciante, String descripcion, boolean tieneStand){
+    public void asignarAuspiciante(Auspiciante auspiciante, String descripcion, boolean tieneStand) {
         this.auspiciantes.add(new AuspicianteEnFeria(auspiciante, descripcion, tieneStand));
     }
 
-    public String distribucionStands(){
-        int i =1;
+    public String distribucionStands() {
+        int i = 1;
         StringBuilder str = new StringBuilder();
         for (Seccion seccion : secciones) {
-            str.append("\nSeccion "+i+"\n");
+            str.append("\nSeccion " + i + "\n");
             for (Stand stand : seccion.getLstStands()) {
                 String mensaje = stand.getReservado() ? "*" : "";
-                str.append("["+stand.getCodigo()+mensaje+"]");     
+                str.append("[" + stand.getCodigo() + mensaje + "]");
             }
         }
         return str.toString();
     }
 
-    public String consultarEmprendedores(){
+    public String consultarEmprendedores() {
         StringBuilder str = new StringBuilder();
         for (Emprendedor emprendedor : emprendedores) {
-            str.append("\n"+emprendedor.toString());
+            str.append("\n" + emprendedor.toString());
         }
         return str.toString();
     }
 
-    public void reservarStand(Persona persona){
-        
+    public void reservarStand(Persona persona) {
+
     }
 
-    public String informacionStand(String codigoStand){
+    public String informacionStand(String codigoStand) {
         for (Seccion seccion : this.secciones) {
             for (Stand stand : seccion.getLstStands()) {
-                if (stand.getCodigo().equals(codigoStand)){
+                if (stand.getCodigo().equals(codigoStand)) {
                     return stand.toString();
                 }
             }
@@ -147,9 +147,9 @@ public class Feria {
         return null;
     }
 
-    public Feria buscarFeria(ArrayList<Feria> ferias,int codigo){
+    public static Feria buscarFeria(ArrayList<Feria> ferias, int codigo) {
         for (Feria feria : ferias) {
-            if (feria.getCodigo()==codigo) {
+            if (feria.getCodigo() == codigo) {
                 return feria;
             }
         }

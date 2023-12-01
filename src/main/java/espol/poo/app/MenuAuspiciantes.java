@@ -36,15 +36,15 @@ public class MenuAuspiciantes {
             switch (opcion.charAt(0)) {
                 case '1':
                     // Código para Registrar Auspiciantes
-                    registrarAuspiciante();
+                    registrarAuspiciante(sc);
                     break;
                 case '2':
                     // Código para Editar Auspiciantes
-                    editarAuspiciante();
+                    editarAuspiciante(sc);
                     break;
                 case '3':
                     // Código para Asignar un Auspiciante a Feria
-                    asignarAuspiciante();
+                    asignarAuspiciante(sc);
                     break;
                 case '4':
                     // Salir del bucle
@@ -55,11 +55,11 @@ public class MenuAuspiciantes {
             }
         } while (opcion.charAt(0) != '4');
         System.out.println("Volviendo al menú principal.....\n");
+        sc.close();
     }
 
-    static void registrarAuspiciante() {
+    static void registrarAuspiciante(Scanner sc) {
         System.out.println("\nRegistrar Auspiciante:");
-        Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el ruc del auspiciante: ");
         String ruc = sc.nextLine();
         System.out.println("Ingrese el nombre del auspiciante: ");
@@ -147,8 +147,7 @@ public class MenuAuspiciantes {
         }
     }
 
-    static void editarAuspiciante() {
-        Scanner sc = new Scanner(System.in);
+    static void editarAuspiciante(Scanner sc) {
         String ruc;
         String opcionEdit;
         System.out.println("\nEditar Auspiciante:\n");
@@ -302,7 +301,7 @@ public class MenuAuspiciantes {
         } while (opcionEdit.charAt(0) != '9');
     }
 
-    static void asignarAuspiciante() {
+    static void asignarAuspiciante(Scanner sc) {
 
         System.out.println("Auspiciantes registrados: ");
         for (Auspiciante a : App.listaAuspiciantes) {
@@ -317,7 +316,6 @@ public class MenuAuspiciantes {
             System.out.println();
         }
 
-        Scanner sc = new Scanner(System.in);
         int cod_feria;
         String ruc;
         String desc;

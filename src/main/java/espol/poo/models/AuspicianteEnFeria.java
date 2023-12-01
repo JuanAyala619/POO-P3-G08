@@ -10,24 +10,29 @@ public class AuspicianteEnFeria {
         this.descripcion = descripcion;
         this.tieneStand = tieneStand;
     }
+
     public Auspiciante getAuspiciante() {
         return auspiciante;
     }
+
     public void setAuspiciante(Auspiciante auspiciante) {
         this.auspiciante = auspiciante;
     }
+
     public String getDescripcion() {
         return descripcion;
     }
+
     public void setDescripcionServicio(String descripcion) {
         this.descripcion = descripcion;
     }
+
     public boolean isTieneStand() {
         return tieneStand;
     }
+
     public void setTieneStand(boolean tieneStand) {
         this.tieneStand = tieneStand;
     }
-
 
 }

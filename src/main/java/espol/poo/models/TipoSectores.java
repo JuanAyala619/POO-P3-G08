@@ -5,7 +5,7 @@ public enum TipoSectores {
     EDUCACION,
     SALUD,
     VESTIMENTA;
-    
+
     // Método toString
     @Override
     public String toString() {

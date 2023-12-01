@@ -1,7 +1,7 @@
 package espol.poo.models;
 
 public enum TipoRedSocial {
-    //Parametros
+    // Parametros
     Twitter,
     Facebook,
     Instagram,
@@ -9,11 +9,11 @@ public enum TipoRedSocial {
     TikTok,
     LinkedIn,
     Pinterest;
-    
-    //Metodo toString
+
+    // Metodo toString
     @Override
     public String toString() {
-      switch (this) {
+        switch (this) {
             case Twitter:
                 return "Twitter";
             case Facebook:

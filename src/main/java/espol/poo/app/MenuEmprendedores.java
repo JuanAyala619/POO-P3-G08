@@ -205,5 +205,6 @@ public class MenuEmprendedores {
             }
             // Código para editar emprendedor
         }while(opcion.charAt(0) != '3');
+        sc.close();
     }
 }
