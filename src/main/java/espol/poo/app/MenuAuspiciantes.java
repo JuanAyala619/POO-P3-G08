@@ -5,8 +5,7 @@ import java.util.Scanner;
 
 public class MenuAuspiciantes {
 
-    static void menu() {
-        Scanner sc = new Scanner(System.in);
+    static void menu(Scanner sc) {
 
         String opcion = "";
         do {
@@ -55,7 +54,6 @@ public class MenuAuspiciantes {
             }
         } while (opcion.charAt(0) != '4');
         System.out.println("Volviendo al menú principal.....\n");
-        sc.close();
     }
 
     static void registrarAuspiciante(Scanner sc) {
@@ -75,12 +73,12 @@ public class MenuAuspiciantes {
         System.out.println("Ingrese el nombre de la persona responsable: ");
         String p_responsable = sc.nextLine();
         boolean condicion = false;
-        for (Auspiciante a : App.listaAuspiciantes) {//valida que no exista algun ruc repetido
+        for (Auspiciante a : App.listaAuspiciantes) {// valida que no exista algun ruc repetido
             if (a.getRuc() == ruc) {
                 condicion = true;
             }
         }
-        if (condicion == true || ruc.isBlank()) {//valida que el ruc no se repita en auspiciantes y que no esté vacío
+        if (condicion == true || ruc.isBlank()) {// valida que el ruc no se repita en auspiciantes y que no esté vacío
             System.out.println("Ya existe alguien registrado con el mismo ruc o no es un ruc válido.... ");
         } else {
             Auspiciante a = new Auspiciante(ruc, nombre, telefono, email, direccion, sitio_web, p_responsable);
@@ -111,7 +109,8 @@ public class MenuAuspiciantes {
                     }
                     case '2' -> {
                         if (a.getLstTipoSectores().isEmpty()) {
-                            System.out.println("El auspiciante no tiene asignado ningún sector porfavor asigne al menos uno.....");
+                            System.out.println(
+                                    "El auspiciante no tiene asignado ningún sector porfavor asigne al menos uno.....");
                         } else {
                             System.out.println("Registro de sectores finalizado.....");
                         }
@@ -121,7 +120,7 @@ public class MenuAuspiciantes {
                 }
             } while (opcion.charAt(0) != '2' || a.getLstTipoSectores().isEmpty());
 
-            //Agragar una red social
+            // Agragar una red social
             for (TipoRedSocial t : TipoRedSocial.values()) {
                 do {
                     System.out.println("\nTiene cuenta de " + t + "?");
@@ -143,7 +142,6 @@ public class MenuAuspiciantes {
             App.listaAuspiciantes.add(a);
             System.out.println("Auspiciante agregado correctamente.....\n");
             System.out.println("Volviendo al menú auspiciantes.....\n");
-            sc.close();
         }
     }
 
@@ -254,7 +252,8 @@ public class MenuAuspiciantes {
                 case '8' -> {
                     Auspiciante a = (Auspiciante) App.buscarPersona(ruc);
                     a.borrarSectores();
-                    System.out.println("Se ha borrado la lista de sectores del auspiciante, por favor ingrese nuevamente los sectores: ");
+                    System.out.println(
+                            "Se ha borrado la lista de sectores del auspiciante, por favor ingrese nuevamente los sectores: ");
                     int n_sector = 0;
                     String opcion = "";
                     do {
@@ -282,7 +281,8 @@ public class MenuAuspiciantes {
                             }
                             case '2' -> {
                                 if (a.getLstTipoSectores().isEmpty()) {
-                                    System.out.println("El auspiciante no tiene asignado ningún sector porfavor asigne al menos uno.....");
+                                    System.out.println(
+                                            "El auspiciante no tiene asignado ningún sector porfavor asigne al menos uno.....");
                                 } else {
                                     System.out.println("Registro de sectores finalizado.....");
                                 }
@@ -359,7 +359,7 @@ public class MenuAuspiciantes {
                 default ->
                     System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 2.");
             }
-        }while (opcion.charAt(0) != '2');
+        } while (opcion.charAt(0) != '2');
         System.out.println("Auspiciante agregado correctamente");
         System.out.println("Volviendo al menú de auspiciantes.....\n");
     }
