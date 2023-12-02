@@ -60,18 +60,6 @@ public class App {
         return p;
     }
 
-    public static Feria buscarFeria(int codigo) {
-        Feria f = null;
-        for (int i = 0; i < listaFerias.size(); i++) {
-            int cf = listaFerias.get(i).getCodigo();
-            if (cf == codigo) {
-                f = listaFerias.get(i);
-
-            }
-        }
-        return f;
-    }
-
     public static void agregarEmprendedores() {
         listaEmprendedores.add(new Emprendedor("1798285937001", "Tienda de Pepe", "0948652474", "tpepe@gmail.com",
                 "Urbanización Los Dos Caminos", "www.tiendapepe.com.ec", "Pepe", "Venta de articulos varios"));

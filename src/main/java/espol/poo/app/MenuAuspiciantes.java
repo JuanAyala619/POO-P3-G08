@@ -47,7 +47,7 @@ public class MenuAuspiciantes {
                     break;
                 case '4':
                     // Salir del bucle
-                    System.out.println("Saliendo deL Menú de Auspiciantes....");
+                    System.out.println("Saliendo del Menú de Auspiciantes....");
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 5.");
@@ -325,10 +325,10 @@ public class MenuAuspiciantes {
             System.out.println("Ingrese el código de la feria");
             cod_feria = sc.nextInt();
             sc.nextLine();
-            if (App.buscarFeria(cod_feria) == null) {
+            if (Feria.buscarFeria(cod_feria, App.listaFerias) == null) {
                 System.out.println("El codigo de feria ingresado no pertenese a ninguna feria registrada");
             }
-        } while (App.buscarFeria(cod_feria) == null);
+        } while (Feria.buscarFeria(cod_feria, App.listaFerias) == null);
 
         do {
             System.out.println("Ingrese el RUC o cedula del auspiciante a asignar: ");
@@ -350,11 +350,11 @@ public class MenuAuspiciantes {
 
             switch (opcion.charAt(0)) {
                 case '1' -> {
-                    App.buscarFeria(cod_feria).asignarAuspiciante(a, desc, true);
+                    Feria.buscarFeria(cod_feria, App.listaFerias).asignarAuspiciante(a, desc, true);
 
                 }
                 case '2' -> {
-                    App.buscarFeria(cod_feria).asignarAuspiciante(a, desc, false);
+                    Feria.buscarFeria(cod_feria, App.listaFerias).asignarAuspiciante(a, desc, false);
                 }
                 default ->
                     System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 2.");

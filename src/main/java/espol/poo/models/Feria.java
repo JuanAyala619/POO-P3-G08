@@ -147,7 +147,7 @@ public class Feria {
         return null;
     }
 
-    public static Feria buscarFeria(ArrayList<Feria> ferias, int codigo) {
+    public static Feria buscarFeria(int codigo, ArrayList<Feria> ferias) {
         for (Feria feria : ferias) {
             if (feria.getCodigo() == codigo) {
                 return feria;
