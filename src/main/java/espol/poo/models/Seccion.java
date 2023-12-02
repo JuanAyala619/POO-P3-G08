@@ -13,6 +13,10 @@ public class Seccion {
     this.codigoFeria = codigoFeria;
   }
 
+  public Seccion(int id) {
+    this.id = id;
+  }
+
   public int getId() {
     return this.id;
   }

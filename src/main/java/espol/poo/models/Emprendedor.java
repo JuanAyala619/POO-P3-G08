@@ -10,7 +10,7 @@ public class Emprendedor extends Persona {
   }
 
   public String toString() {
-    return super.toString() + "Descripcion: " + descripcionServicios + "\n";
+    return super.toString() + "\nDescripcion: " + descripcionServicios;
   }
 
   public String getDescripcionServicios() {

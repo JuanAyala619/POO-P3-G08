@@ -101,10 +101,24 @@ public class Feria {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.horario = horario;
+        for (int i = 0;i<secciones.length;i++){
+            secciones[i]=new Seccion(i+1);
+        }
     }
 
     public String toString() {
-        return "";
+        StringBuilder str = new StringBuilder();
+        str.append("\nNombre: " + nombre + "\nDescripcion: " + descripcion + "\nLugar: " + lugar
+                + "\nFecha de Inicio: " + fechaInicio + "\nFecha de Fin: " + fechaFin + "\nHorario" + horario
+                + "\nAusipciantes:");
+        for (AuspicianteEnFeria auspiciante : auspiciantes) {
+            str.append(auspiciante.toString());
+        }
+        str.append("\nEmprendedores:");
+        for (Emprendedor emprendedor : emprendedores) {
+            str.append(emprendedor.toString());
+        }
+        return str.toString();
     }
 
     public void asignarAuspiciante(Auspiciante auspiciante, String descripcion, boolean tieneStand) {
@@ -133,7 +147,7 @@ public class Feria {
     }
 
     public void reservarStand(Persona persona) {
-
+        
     }
 
     public String informacionStand(String codigoStand) {

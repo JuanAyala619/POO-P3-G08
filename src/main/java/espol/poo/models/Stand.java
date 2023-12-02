@@ -8,13 +8,12 @@ public class Stand {
   private Persona personaAsignada;
   private boolean reservado;
 
-  public Stand(int id, String codigo, int idSeccion, String fechaAsignacion, Persona personaAsignada,
+  public Stand(int id, String codigo, int idSeccion, String fechaAsignacion,
       boolean reservado) {
     this.id = id;
     this.codigo = codigo;
     this.idSeccion = idSeccion;
     this.fechaAsignacion = fechaAsignacion;
-    this.personaAsignada = personaAsignada;
     this.reservado = reservado;
   }
 
