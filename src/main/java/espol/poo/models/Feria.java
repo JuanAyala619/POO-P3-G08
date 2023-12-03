@@ -101,8 +101,8 @@ public class Feria {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.horario = horario;
-        for (int i = 0;i<secciones.length;i++){
-            secciones[i]=new Seccion(i+1);
+        for (int i = 0; i < secciones.length; i++) {
+            secciones[i] = new Seccion(i + 1);
         }
     }
 
@@ -126,10 +126,9 @@ public class Feria {
     }
 
     public String distribucionStands() {
-        int i = 1;
         StringBuilder str = new StringBuilder();
         for (Seccion seccion : secciones) {
-            str.append("\nSeccion " + i + "\n");
+            str.append("\nSeccion " + seccion.getId() + "\n");
             for (Stand stand : seccion.getLstStands()) {
                 String mensaje = stand.getReservado() ? "*" : "";
                 str.append("[" + stand.getCodigo() + mensaje + "]");
@@ -147,7 +146,7 @@ public class Feria {
     }
 
     public void reservarStand(Persona persona) {
-        
+
     }
 
     public String informacionStand(String codigoStand) {
