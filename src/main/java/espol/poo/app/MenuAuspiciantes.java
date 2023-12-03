@@ -346,7 +346,7 @@ public class MenuAuspiciantes {
             System.out.println("1. Si" + "\n"
                     + "2. No");
             System.out.print("Ingrese el numero de opcion: ");
-            opcion = sc.nextLine();
+            opcion = sc.nextLine() + " ";
 
             switch (opcion.charAt(0)) {
                 case '1' -> {
@@ -359,7 +359,7 @@ public class MenuAuspiciantes {
                 default ->
                     System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 2.");
             }
-        } while (opcion.charAt(0) != '2');
+        } while (opcion.charAt(0) != '2' && opcion.charAt(0) != '1');
         System.out.println("Auspiciante agregado correctamente");
         System.out.println("Volviendo al menú de auspiciantes.....\n");
     }
