@@ -27,7 +27,7 @@ public class MenuFerias {
                     4. Consultar emprendedores en feria
                     5. Regresar
                     """);
-            System.out.println("Ingrese el numero de opcion:");
+            System.out.println("\nIngrese el numero de opcion:");
             opcion = sc.nextLine();
             switch (opcion.charAt(0)) {
                 case '1':

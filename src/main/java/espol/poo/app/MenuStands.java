@@ -9,10 +9,10 @@ public class MenuStands {
         String opcion; // Guarda la opcion del menu
         int codigoFeria;
         Feria feria;
-        System.out.println("Administracion de stands");
+        System.out.println("\nADMINISTRACION DE STANDS");
         // pedir codigo de feria
         do {
-            System.out.println("Ingrese el codigo de la feria");
+            System.out.println("\nIngrese el codigo de la feria");
             codigoFeria = sc.nextInt();
             sc.nextLine();
             feria = Feria.buscarFeria(codigoFeria, App.listaFerias);
@@ -22,15 +22,15 @@ public class MenuStands {
         } while (feria == null);
         // Bucle de menu
         do {
-            System.out.println("Distribucion de stands:");
+            System.out.println("\nDistribucion de stands:");
             // For para recorrer la lista de emprendedores y mostrar sus datos
             System.out.println(feria.distribucionStands());
-            System.out.println("Menu de administracion de stands");
+            System.out.println("\nMenu de administracion de stands");
             System.out.println("""
                     1. Reservar stand
                     2. Mostrar informacion de stand
                     3. Regresar""");
-            System.out.print("Ingrese el numero de opcion: ");
+            System.out.print("\nIngrese el numero de opcion: ");
             opcion = sc.nextLine() + " ";
             System.out.println();
 

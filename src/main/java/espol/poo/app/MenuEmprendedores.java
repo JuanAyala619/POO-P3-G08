@@ -6,10 +6,10 @@ import espol.poo.models.*;
 public class MenuEmprendedores {
     static void menu(Scanner sc) {
         String opcion; // Guarda la opcion del menu
-        System.out.println("Administracion de emprendedores");
+        System.out.println("\nADMINISTRACION DE EMPRENDEDORES");
         // Blucle del menu
         do {
-            System.out.println("Emprendedores registrados actualmente:");
+            System.out.println("\nEmprendedores registrados actualmente:");
             // For para recorrer la lista de emprendedores y mostrar sus datos
             for (Emprendedor e : App.listaEmprendedores) {
                 System.out.println("Cedula/RUC: " + e.getRuc());
@@ -23,7 +23,7 @@ public class MenuEmprendedores {
                     1. Registrar emprendedor
                     2. Editar emprendedor
                     3. Regresar""");
-            System.out.print("Ingrese el numero de opcion: ");
+            System.out.print("\nIngrese el numero de opcion: ");
             opcion = sc.nextLine() + " ";
             System.out.println();
 

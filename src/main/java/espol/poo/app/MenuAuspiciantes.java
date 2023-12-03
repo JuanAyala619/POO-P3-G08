@@ -6,10 +6,10 @@ import java.util.Scanner;
 public class MenuAuspiciantes {
 
     static void menu(Scanner sc) {
-
+        System.out.println("\nADMINISTRACION DE AUSPICIANTES");
         String opcion = "";
         do {
-            System.out.println("Auspiciantes registrados: ");
+            System.out.println("\nAuspiciantes registrados: ");
             for (Auspiciante a : App.listaAuspiciantes) {
                 System.out.println("\nRUC: "+a.getRuc());
                 System.out.println("Nombre: "+a.getNombre());
@@ -27,7 +27,7 @@ public class MenuAuspiciantes {
                     + "3. Asignar Auspiciante a Feria" + "\n"
                     + "4. Regresar");
 
-            System.out.print("Ingrese el numero de opcion: ");
+            System.out.print("\nIngrese el numero de opcion: ");
             opcion = sc.nextLine();
             System.out.println();
 
