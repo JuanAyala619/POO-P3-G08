@@ -11,15 +11,14 @@ public class MenuAuspiciantes {
         do {
             System.out.println("Auspiciantes registrados: ");
             for (Auspiciante a : App.listaAuspiciantes) {
-                System.out.println(a.getRuc());
-                System.out.println(a.getNombre());
-                System.out.println(a.getTelefono());
-                System.out.println(a.getEmail());
-                System.out.println(a.getDireccion());
-                System.out.println(a.getSitioWeb());
-                System.out.println(a.getPersonaResponsable());
-                System.out.println(a.getLstTipoSectores());
-                System.out.println();
+                System.out.println("\nRUC: "+a.getRuc());
+                System.out.println("Nombre: "+a.getNombre());
+                System.out.println("Telefono: "+a.getTelefono());
+                System.out.println("Email: "+a.getEmail());
+                System.out.println("Direccion: "+a.getDireccion());
+                System.out.println("Sitio web: "+a.getSitioWeb());
+                System.out.println("Persona Responsable: "+a.getPersonaResponsable());
+                System.out.println("Sectores"+a.getLstTipoSectores());
             }
 
             System.out.println("\nMenu de Opciones: ");
@@ -56,7 +55,7 @@ public class MenuAuspiciantes {
         System.out.println("Volviendo al menú principal.....\n");
     }
 
-    static void registrarAuspiciante(Scanner sc) {
+    private static void registrarAuspiciante(Scanner sc) {
         System.out.println("\nRegistrar Auspiciante:");
         System.out.println("Ingrese el ruc del auspiciante: ");
         String ruc = sc.nextLine();
@@ -145,7 +144,7 @@ public class MenuAuspiciantes {
         }
     }
 
-    static void editarAuspiciante(Scanner sc) {
+    private static void editarAuspiciante(Scanner sc) {
         String ruc;
         String opcionEdit;
         System.out.println("\nEditar Auspiciante:\n");
@@ -301,7 +300,7 @@ public class MenuAuspiciantes {
         } while (opcionEdit.charAt(0) != '9');
     }
 
-    static void asignarAuspiciante(Scanner sc) {
+    private static void asignarAuspiciante(Scanner sc) {
 
         System.out.println("Auspiciantes registrados: ");
         for (Auspiciante a : App.listaAuspiciantes) {

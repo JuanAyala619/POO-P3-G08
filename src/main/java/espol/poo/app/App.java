@@ -17,15 +17,15 @@ public class App {
         agregarFerias();
         System.out.println("Bienvenido al sistema de administracion de ferias");
         do {
-            System.out.println("Menu Principal");
+            System.out.println("\nMENU PRINCIPAL");
             System.out.println("""
                     1. Administracion de ferias
                     2. Administracion de emprendedores
                     3. Administracion de auspiciantes
                     4. Administracion de stands
                     5. Salir""");
-            System.out.print("Ingrese el numero de opcion: ");
-            opcion = sc.nextLine() + " ";
+            System.out.print("\nIngrese el numero de opcion: ");
+            opcion = sc.nextLine();
             System.out.println();
 
             switch (opcion.charAt(0)) {
@@ -93,12 +93,12 @@ public class App {
     }
 
     public static void agregarFerias() {
-        Feria feria1 = new Feria(App.listaFerias.size() + 1, "Feria de Navidad",
-                "Decoraciones para tu casa en tiempos de Navidad", "Ceibos", "2023-10-20", "2023-12-20", "9:00-20:00");
-        feria1.asignarNumeroStands(1, 1, 1, 1);
-        feria1.asignarAuspiciante(listaAuspiciantes.get(0), "Gorros de Navidad", true);
+        Feria feria = new Feria(App.listaFerias.size() + 1, "Feria de Navidad",
+                "Decoraciones para tu casa en tiempos de Navidad", "Ceibos", "2024-10-20", "2024-12-20", "9:00-20:00");
+        feria.asignarNumeroStands(1, 1, 1, 1);
+        feria.asignarAuspiciante(listaAuspiciantes.get(0), "Gorros de Navidad", true);
 
-        listaFerias.add(feria1);
+        listaFerias.add(feria);
     }
 
 }
