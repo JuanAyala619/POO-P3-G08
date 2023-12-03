@@ -80,10 +80,20 @@ public class MenuStands {
                 System.out.println("Un emprendedor puede reservar un maximo de 2 stands");
             } else {
                 feria.reservarStand(codigo, App.buscarPersona(ruc), LocalDate.now());
+                System.out.println("Stand reservado");
             }
         } else {
-            feria.reservarStand(codigo, App.buscarPersona(ruc), LocalDate.now());
-
+            Auspiciante a = (Auspiciante)persona;
+            for(AuspicianteEnFeria af: feria.getAuspiciantes()){
+                if(af.getAuspiciante().equals(a)){
+                    if(af.isTieneStand()){
+                        feria.reservarStand(codigo, App.buscarPersona(ruc), LocalDate.now());
+                        System.out.println("Stand reservado");
+                    }else{
+                        System.out.println("Este auspiciante no incluye stand en la feria");
+                    }
+                }
+            }
         }
     }
 
