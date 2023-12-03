@@ -35,4 +35,12 @@ public class Auspiciante extends Persona {
       this.lstTipoSectores.add(TipoSectores.VESTIMENTA);
     }
   }
+  
+  @Override
+    public boolean equals(Object obj) {
+        Auspiciante a = (Auspiciante)obj;
+        if (this.getNombre().equals(a.getNombre()))
+            return true;
+        return false;
+    }
 }

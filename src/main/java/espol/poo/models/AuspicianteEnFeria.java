@@ -39,5 +39,13 @@ public class AuspicianteEnFeria {
         return "\nAuspiciante: " + auspiciante.toString() + "\nDescripcion del Servicio: " + descripcion
                 + "\nTiene Stand: " + (tieneStand ? "Si" : "No");
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        AuspicianteEnFeria a = (AuspicianteEnFeria)obj;
+        if (this.auspiciante.equals(a.getAuspiciante()))
+            return true;
+        return false;
+    }
 
 }
