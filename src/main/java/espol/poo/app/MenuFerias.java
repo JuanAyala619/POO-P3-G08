@@ -17,7 +17,7 @@ public class MenuFerias {
                 System.out.println("Nombre: " + feria.getNombre());
                 System.out.println("Fecha de Inicio: " + feria.getFechaInicio().toString());
                 System.out.println("Lugar: " + feria.getLugar());
-                System.out.println("Cantidad de Auspiciantes: " + feria.getAuspiciantes().size());
+                System.out.println("Cantidad de Auspiciantes: " + feria.getAuspiciantes().size() + "\n");
             }
             System.out.println("Menu de Opciones:");
             System.out.println("""
