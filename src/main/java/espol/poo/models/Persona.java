@@ -49,12 +49,12 @@ public abstract class Persona {
     // Metodo toString
     @Override
     public String toString() {
-        return "\nNombre: " + nombre  +
-                "\nRuc/Cedula: " + ruc + 
-                "\nTelefono: " + telefono + 
-                "\nEmail: " + email + 
+        return "\nNombre: " + nombre +
+                "\nRuc/Cedula: " + ruc +
+                "\nTelefono: " + telefono +
+                "\nEmail: " + email +
                 "\nDireccion: " + direccion +
-                "\nSitioWeb: " + sitioWeb + 
+                "\nSitioWeb: " + sitioWeb +
                 "\nPersonaResponsable: " + personaResponsable +
                 "\nRedes Sociales: " + redesSociales;
     }

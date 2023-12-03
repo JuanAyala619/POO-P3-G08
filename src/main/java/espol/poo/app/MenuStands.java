@@ -1,5 +1,6 @@
 package espol.poo.app;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 import espol.poo.models.*;
 
@@ -9,7 +10,7 @@ public class MenuStands {
         int codigoFeria;
         Feria feria;
         System.out.println("Administracion de stands");
-        //pedir codigo de feria
+        // pedir codigo de feria
         do {
             System.out.println("Ingrese el codigo de la feria");
             codigoFeria = sc.nextInt();
@@ -19,7 +20,7 @@ public class MenuStands {
                 System.out.println("El codigo ingresado no pertenese a ninguna feria");
             }
         } while (feria == null);
-        //Bucle de menu
+        // Bucle de menu
         do {
             System.out.println("Distribucion de stands:");
             // For para recorrer la lista de emprendedores y mostrar sus datos
@@ -62,10 +63,29 @@ public class MenuStands {
             System.out.println("Ingrese el RUC o cedula de la persona que reservara el stand");
             ruc = sc.nextLine();
             if (App.buscarPersona(ruc) == null) {
-                System.out.println("El RUC o cedula ingresado no pertenese a ningun emprendedor o auspiciante registrado");
+                System.out.println(
+                        "El RUC o cedula ingresado no pertenese a ningun emprendedor o auspiciante registrado");
             }
         } while (App.buscarPersona(ruc) == null);
-        feria.reservarStand(App.buscarPersona(ruc));
+        Persona persona = App.buscarPersona(ruc);
+        if (persona instanceof Emprendedor) {
+            int count = 0;
+            for (Seccion seccion : feria.getSecciones()) {
+                for (Stand stand : seccion.getLstStands()) {
+                    if (stand.getPersonaAsignada() instanceof Emprendedor) {
+                        count++;
+                    }
+                }
+            }
+            if (count == 2) {
+                System.out.println("Un emprendedor puede reservar un maximo de 2 stands");
+            } else {
+                feria.reservarStand(codigo, App.buscarPersona(ruc), LocalDate.now());
+            }
+        } else {
+            feria.reservarStand(codigo, App.buscarPersona(ruc), LocalDate.now());
+
+        }
     }
 
     private static void informacionStand(Scanner sc, Feria feria) {

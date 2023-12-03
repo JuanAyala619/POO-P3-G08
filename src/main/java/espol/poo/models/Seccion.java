@@ -24,7 +24,7 @@ public class Seccion {
     return this.lstStands;
   }
 
-  public void addStand(String codigo){
+  public void addStand(String codigo) {
     this.lstStands.add(new Stand(codigo));
   }
 

@@ -96,6 +96,7 @@ public class App {
                 "Decoraciones para tu casa en tiempos de Navidad", "Ceibos", "2023-10-20", "2023-12-20", "9:00-20:00");
         feria1.asignarNumeroStands(1, 1, 1, 1);
         feria1.asignarAuspiciante(listaAuspiciantes.get(0), "Gorros de Navidad", true);
+
         listaFerias.add(feria1);
     }
 

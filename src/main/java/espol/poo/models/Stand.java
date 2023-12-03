@@ -27,9 +27,14 @@ public class Stand {
     return this.personaAsignada;
   }
 
+  public void setPersonaAsignada(Persona personaAsignada) {
+    this.personaAsignada = personaAsignada;
+  }
+
   public String toString() {
     return "\nStand:" + "\nCodigo: " + this.codigo + "\nFecha Asignada: " + this.fechaAsignacion
         + "\nPersona Asignada: " + ((this.personaAsignada == null) ? "Ninguna" : personaAsignada.toString());
 
   }
+
 }

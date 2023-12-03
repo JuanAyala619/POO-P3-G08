@@ -196,70 +196,345 @@ public class MenuFerias {
                             System.out.println("\nAuspciante" + i + 1);
                             System.out.println(auspiciantesFeria.get(i).toString());
                         }
-                        System.out.println("Ingrese numero de auspiciante a editar:");
+
+                        System.out.println("\nIngrese numero de auspiciante a editar:");
                         int index = sc.nextInt();
                         AuspicianteEnFeria auspicianteFeria = auspiciantesFeria.get(index - 1);
+
+                        System.out.println("\nAuspiciante escogido:");
+                        System.out.println(auspicianteFeria.toString());
+
                         System.out.println("\nMenu de Opciones:");
-                        System.out.println("1. Nombre de Auspiciante");
-                        System.out.println("2. Telefono de Auspiciante");
-                        System.out.println("3. Email de Auspiciante");
-                        System.out.println("4. Direccion de Auspiciante");
-                        System.out.println("5. Sitio Web de Auspiciante");
-                        System.out.println("6. Persona Responsable de Auspiciante");
-                        System.out.println("7. Redes Sociales de Auspiciante");
-                        System.out.println("8. Lista de Sectores de Auspiciante");
-                        System.out.println("10. Descripcion de Auspiciante");
-                        System.out.println("11. Tiene Stand o no");
-                        System.out.println("12. Volver a Menu de Editar Feria");
+                        System.out.println("1. Nombre");
+                        System.out.println("2. Telefono");
+                        System.out.println("3. Email");
+                        System.out.println("4. Direccion");
+                        System.out.println("5. Sitio Web");
+                        System.out.println("6. Persona Responsable");
+                        System.out.println("7. Redes Sociales");
+                        System.out.println("8. Lista de Sectores");
+                        System.out.println("9. Descripcion de Servicio en la Feria");
+                        System.out.println("10. Tiene Stand o no");
+                        System.out.println("11. Volver a Menu de Editar Feria");
+
                         System.out.println("\nIngrese numero de Opcion:");
+                        Auspiciante auspiciante = auspicianteFeria.getAuspiciante();
+                        do {
+                            System.out.print("Ingrese numero de opcion: ");
+                            opcionEdit = sc.nextLine() + " ";
+                            switch (opcionEdit) {
+                                case "1" -> {
+                                    System.out.println("Ingrese el nuevo nombre");
+                                    String nuevoNombre = sc.nextLine();
+                                    auspiciante.setNombre(nuevoNombre);
+                                    System.out.println("Nombre modificado con exito.");
+                                }
+                                case "2" -> {
+                                    System.out.println("Ingrese el nuevo telefono");
+                                    String nuevoTelefono = sc.nextLine();
+                                    auspiciante.setTelefono(nuevoTelefono);
+                                    System.out.println("Telefono modificado con exito.");
+                                }
+                                case "3" -> {
+                                    System.out.println("Ingrese el nuevo Email");
+                                    String nuevoEmail = sc.nextLine();
+                                    auspiciante.setEmail(nuevoEmail);
+                                    System.out.println("Email modificado con exito.");
+                                }
+                                case "4" -> {
+                                    System.out.println("Ingrese la nueva direccion");
+                                    String nuevaDir = sc.nextLine();
+                                    auspiciante.setDireccion(nuevaDir);
+                                    System.out.println("Direccion modificada con exito.");
+                                }
+                                case "5" -> {
+                                    System.out.println("Ingrese el nuevo sitio web");
+                                    String nuevoSitio = sc.nextLine();
+                                    auspiciante.setTelefono(nuevoSitio);
+                                    System.out.println("Sitio web modificado con exito.");
+                                }
+                                case "6" -> {
+                                    System.out.println("Ingrese el nombre de la nueva persona responsable");
+                                    String nuevoResponsable = sc.nextLine();
+                                    auspiciante.setPersonaResponsable(nuevoResponsable);
+                                    System.out.println("Nombre de persona responsable modificado con exito.");
+                                }
+                                case "7" -> {
+                                    if (auspiciante.getRedesSociales().isEmpty()) {
+                                        System.out.println("\nEste emprendedor no tiene niguna red social\n");
+                                    } else {
+                                        System.out.println("Lista de redes sociales del auspiciante");
+                                        System.out.println(auspiciante.getRedesSociales());
+                                        int ind;
+                                        do {
+                                            System.out
+                                                    .println("Escriba el nombre de la red social que de desea editar");
+                                            String tipo = sc.nextLine();
+                                            TipoRedSocial red = TipoRedSocial.Twitter;
+                                            if (tipo.equals("Twitter")) {
+                                                red = TipoRedSocial.Twitter;
+                                            } else if (tipo.equals("Facebook")) {
+                                                red = TipoRedSocial.Facebook;
+                                            } else if (tipo.equals("Instagram")) {
+                                                red = TipoRedSocial.Instagram;
+                                            } else if (tipo.equals("Youtube")) {
+                                                red = TipoRedSocial.Youtube;
+                                            } else if (tipo.equals("TikTok")) {
+                                                red = TipoRedSocial.TikTok;
+                                            } else if (tipo.equals("LinkedIn")) {
+                                                red = TipoRedSocial.LinkedIn;
+                                            } else if (tipo.equals("Pinterest")) {
+                                                red = TipoRedSocial.Pinterest;
+                                            } else {
+                                            }
+                                            ind = auspiciante.getRedesSociales().indexOf(new RedSocial(red, "", ""));
+                                            if (ind == -1) {
+                                                System.out.println("Por favor escriba un nombre valido");
+                                            }
+                                        } while (ind == -1);
+                                        System.out.println("Escriba el nuevo nombre de usuario");
+                                        String nuevoNombre = sc.nextLine();
+                                        System.out.println("Escriba el nuevo link del usuario");
+                                        String nuevoLink = sc.nextLine();
+                                        auspiciante.getRedesSociales().get(ind).setUsuario(nuevoNombre);
+                                        auspiciante.getRedesSociales().get(ind).setEnlace(nuevoLink);
+                                        System.out.println("Red social modificada con exito");
+                                    }
+                                }
+                                case "8" -> {
+                                    Auspiciante a = (Auspiciante) auspiciante;
+                                    a.borrarSectores();
+                                    System.out.println(
+                                            "Se ha borrado la lista de sectores del auspiciante, por favor ingrese nuevamente los sectores: ");
+                                    int n_sector = 0;
+                                    String opcion = "";
+                                    do {
+                                        System.out.println("\nMenu de Opciones: ");
+                                        System.out.println("1. Añadir Sector" + "\n"
+                                                + "2. Terminar de añadir sectores");
+                                        System.out.print("Ingrese el numero de opcion: ");
+                                        opcion = sc.nextLine();
+
+                                        switch (opcion.charAt(0)) {
+                                            case '1' -> {
+                                                System.out.println("\nLos sectores disponibles son: ");
+                                                System.out.println("1. Alimentacion" + "\n"
+                                                        + "2. Educacion" + "\n"
+                                                        + "3. Salud" + "\n"
+                                                        + "4. Vestimenta");
+                                                System.out.println("Ingrese el número de sector a añadir:");
+                                                n_sector = sc.nextInt();
+                                                sc.nextLine();
+                                                if (n_sector > 4 || n_sector < 0) {
+                                                    System.out.println("Número de sector inválido. Regresando......");
+                                                } else {
+                                                    a.agregarSectores(n_sector);
+                                                }
+                                            }
+                                            case '2' -> {
+                                                if (a.getLstTipoSectores().isEmpty()) {
+                                                    System.out.println(
+                                                            "El auspiciante no tiene asignado ningún sector porfavor asigne al menos uno.....");
+                                                } else {
+                                                    System.out.println("Registro de sectores finalizado.....");
+                                                }
+                                            }
+                                            default ->
+                                                System.out.println(
+                                                        "Opción no válida. Por favor, ingresa un número del 1 al 2.");
+                                        }
+                                    } while (opcion.charAt(0) != '2' || a.getLstTipoSectores().isEmpty());
+                                }
+                                case "9" -> {
+                                    System.out.println("Ingrese la nueva descripion del servicio");
+                                    String descripcion = sc.nextLine();
+                                    auspicianteFeria.setDescripcionServicio(descripcion);
+                                    System.out.println("Descripcion de Servicio modificado con exito.");
+
+                                }
+                                case "10" -> {
+
+                                    System.out.println("¿Desea que el Aupsiciante tenga stand o no? (S/N)");
+                                    String respStand = sc.nextLine();
+                                    if (respStand == "s" || respStand == "S") {
+                                        auspicianteFeria.setTieneStand(true);
+                                    } else if (respStand == "n" || respStand == "N") {
+                                        auspicianteFeria.setTieneStand(false);
+                                    }
+                                }
+                                case "11" -> {
+                                    System.out.println("Volviendo al Menu de Edicion de Feria");
+                                }
+
+                                default ->
+                                    System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 11.");
+                            }
+                        } while (opcionEdit.charAt(0) != '9');
                     }
 
                 }
                 case '8' -> {
-                    Auspiciante a = null;
-                    a.borrarSectores();
-                    System.out.println(
-                            "Se ha borrado la lista de sectores del auspiciante, por favor ingrese nuevamente los sectores: ");
-                    int n_sector = 0;
-                    String opcion = "";
-                    do {
-                        System.out.println("\nMenu de Opciones: ");
-                        System.out.println("1. Añadir Sector" + "\n"
-                                + "2. Terminar de añadir sectores");
-                        System.out.print("Ingrese el numero de opcion: ");
-                        opcion = sc.nextLine();
-
-                        switch (opcion.charAt(0)) {
-                            case '1' -> {
-                                System.out.println("\nLos sectores disponibles son: ");
-                                System.out.println("1. Alimentacion" + "\n"
-                                        + "2. Educacion" + "\n"
-                                        + "3. Salud" + "\n"
-                                        + "4. Vestimenta");
-                                System.out.println("Ingrese el número de sector a añadir:");
-                                n_sector = sc.nextInt();
-                                sc.nextLine();
-                                if (n_sector > 4 || n_sector < 0) {
-                                    System.out.println("Número de sector inválido. Regresando......");
-                                } else {
-                                    a.agregarSectores(n_sector);
-                                }
-                            }
-                            case '2' -> {
-                                if (a.getLstTipoSectores().isEmpty()) {
-                                    System.out.println(
-                                            "El auspiciante no tiene asignado ningún sector porfavor asigne al menos uno.....");
-                                } else {
-                                    System.out.println("Registro de sectores finalizado.....");
-                                }
-                            }
-                            default ->
-                                System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 2.");
+                    if (feria.getEmprendedores() == null) {
+                        System.out.println("\nEsta feria no tiene emprendedores");
+                    } else {
+                        ArrayList<Emprendedor> emprendedores = feria.getEmprendedores();
+                        System.out.println("\nEditar Emprendedores:");
+                        for (int i = 0; i < emprendedores.size(); i++) {
+                            System.out.println("\nAuspciante" + i + 1);
+                            System.out.println(emprendedores.get(i).toString());
                         }
-                    } while (opcion.charAt(0) != '2' || a.getLstTipoSectores().isEmpty());
+
+                        System.out.println("\nIngrese numero de emprendedor a editar:");
+                        int index = sc.nextInt();
+                        Emprendedor emprendedor = emprendedores.get(index - 1);
+
+                        System.out.println("\nEmprendedor escogido:");
+                        System.out.println(emprendedor.toString());
+                        System.out.println("¿Que campo desea editar?");
+                        System.out.println("1. Nombre");
+                        System.out.println("2. Telefono");
+                        System.out.println("3. Email");
+                        System.out.println("4. Direccion");
+                        System.out.println("5. Sitio Web");
+                        System.out.println("6. Persona Responsable");
+                        System.out.println("7. Redes Sociales");
+                        System.out.println("8. Descripcion de servicios");
+                        do {
+                            System.out.print("Ingrese numero de opcion: ");
+                            opcionEdit = sc.nextLine() + " ";
+                            switch (opcionEdit.charAt(0)) {
+                                case '1' -> {
+                                    String nombre;
+                                    do {
+                                        System.out.println("Ingrese nuevo el nombre:");
+                                        nombre = sc.nextLine();
+                                        if ("".equals(nombre))
+                                            System.out.println("Este campo no puede quedar vacio");
+                                    } while ("".equals(nombre));
+                                    emprendedor.setNombre(nombre);
+                                    System.out.println("Nombre modificado con exito.");
+                                }
+                                case '2' -> {
+                                    String telefono;
+                                    do {
+                                        System.out.println("Ingrese el nuevo teléfono:");
+                                        telefono = sc.nextLine();
+                                        if ("".equals(telefono))
+                                            System.out.println("Este campo no puede quedar vacio");
+                                    } while ("".equals(telefono));
+                                    emprendedor.setTelefono(telefono);
+                                    System.out.println("Telefono modificado con exito.");
+                                }
+                                case '3' -> {
+                                    String email;
+                                    do {
+                                        System.out.println("Ingrese el nuevo correo electrónico:");
+                                        email = sc.nextLine();
+                                        if ("".equals(email))
+                                            System.out.println("Este campo no puede quedar vacio");
+                                    } while ("".equals(email));
+                                    emprendedor.setEmail(email);
+                                    System.out.println("Email modificado con exito.");
+                                }
+                                case '4' -> {
+                                    System.out.println("Ingrese la nueva direccion");
+                                    String nuevaDir = sc.nextLine();
+                                    emprendedor.setDireccion(nuevaDir);
+                                    System.out.println("Direccion modificada con exito.");
+                                }
+                                case '5' -> {
+                                    System.out.println("Ingrese el nuevo sitio web");
+                                    String nuevoSitio = sc.nextLine();
+                                    emprendedor.setTelefono(nuevoSitio);
+                                    System.out.println("Sitio web modificado con exito.");
+                                }
+                                case '6' -> {
+                                    String personaResponsable;
+                                    do {
+                                        System.out.println("Ingrese la persona responsable:");
+                                        personaResponsable = sc.nextLine();
+                                        if ("".equals(personaResponsable))
+                                            System.out.println("Este campo no puede quedar vacio");
+                                    } while ("".equals(personaResponsable));
+                                    emprendedor.setPersonaResponsable(personaResponsable);
+                                    System.out.println("Nombre de persona responsable modificado con exito.");
+                                }
+                                case '7' -> {
+                                    if (emprendedor.getRedesSociales().isEmpty()) {
+                                        System.out.println("\nEste emprendedor no tiene niguna red social\n");
+                                    } else {
+                                        System.out.println("Lista de redes sociales del emprendedor");
+                                        System.out.println(emprendedor.getRedesSociales());
+                                        int ind;
+                                        do {
+                                            System.out.println(
+                                                    "Escriba el nombre de la red social que de desea editar, ejemplo: Twitter");
+                                            String tipo = sc.nextLine();
+                                            TipoRedSocial red = TipoRedSocial.Twitter;
+                                            if (tipo.equals("Twitter")) {
+                                                red = TipoRedSocial.Twitter;
+                                            } else if (tipo.equals("Facebook")) {
+                                                red = TipoRedSocial.Facebook;
+                                            } else if (tipo.equals("Instagram")) {
+                                                red = TipoRedSocial.Instagram;
+                                            } else if (tipo.equals("Youtube")) {
+                                                red = TipoRedSocial.Youtube;
+                                            } else if (tipo.equals("TikTok")) {
+                                                red = TipoRedSocial.TikTok;
+                                            } else if (tipo.equals("LinkedIn")) {
+                                                red = TipoRedSocial.LinkedIn;
+                                            } else if (tipo.equals("Pinterest")) {
+                                                red = TipoRedSocial.Pinterest;
+                                            } else {
+                                            }
+                                            ind = emprendedor.getRedesSociales().indexOf(new RedSocial(red, "", ""));
+                                            if (ind == -1) {
+                                                System.out.println("Por favor escriba un nombre valido");
+                                            }
+                                        } while (ind == -1);
+                                        String user;
+                                        do {
+                                            System.out.print("Ingrese nuevo nombre de usuario: ");
+                                            user = sc.nextLine();
+                                            if ("".equals(user))
+                                                System.out.println("Este campo no puede quedar vacio");
+                                        } while ("".equals(user));
+                                        String enlace;
+                                        do {
+                                            System.out.print("Ingrese el nuevo link de su usuario: ");
+                                            enlace = sc.nextLine();
+                                            if ("".equals(enlace))
+                                                System.out.println("Este campo no puede quedar vacio");
+                                        } while ("".equals(enlace));
+                                        emprendedor.getRedesSociales().get(ind).setUsuario(user);
+                                        emprendedor.getRedesSociales().get(ind).setEnlace(enlace);
+                                        System.out.println("Red social modificada con exito");
+                                    }
+                                }
+                                case '8' -> {
+                                    Emprendedor e = (Emprendedor) emprendedor;
+                                    String descripcionServicios;
+                                    do {
+                                        System.out.println("Ingrese la descripción de servicios:");
+                                        descripcionServicios = sc.nextLine();
+                                        if ("".equals(descripcionServicios))
+                                            System.out.println("Este campo no puede quedar vacio");
+                                    } while ("".equals(descripcionServicios));
+                                    e.setDescripcionServicios(descripcionServicios);
+                                    System.out.println("Descripcion de servicios modificado con exito.");
+                                }
+                                default ->
+                                    System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 8.");
+                            }
+                        } while (opcionEdit.charAt(0) != '1' && opcionEdit.charAt(0) != '2'
+                                && opcionEdit.charAt(0) != '3'
+                                && opcionEdit.charAt(0) != '4' && opcionEdit.charAt(0) != '5'
+                                && opcionEdit.charAt(0) != '6'
+                                && opcionEdit.charAt(0) != '7' && opcionEdit.charAt(0) != '8');
+                    }
                 }
                 case '9' -> {
-                    System.out.println("Volviendo al menú de auspiciantes.....\n");
+                    System.out.println("Volviendo al menu principal");
                 }
                 default ->
                     System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 9.");
