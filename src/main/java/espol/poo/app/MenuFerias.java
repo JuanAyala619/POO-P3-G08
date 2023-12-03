@@ -9,17 +9,17 @@ import espol.poo.models.*;
 public class MenuFerias {
     static void menu(Scanner sc) {
         String opcion;
-        System.out.println("Administracion de Feria");
         do {
-            System.out.println("Ferias registradas:");
+            System.out.println("\nADMINISTRACION DE FERIAS");
+            System.out.println("\nFerias registradas:");
             for (Feria feria : App.listaFerias) {
-                System.out.println("Codigo: " + feria.getCodigo());
+                System.out.println("\nCodigo: " + feria.getCodigo());
                 System.out.println("Nombre: " + feria.getNombre());
                 System.out.println("Fecha de Inicio: " + feria.getFechaInicio().toString());
                 System.out.println("Lugar: " + feria.getLugar());
                 System.out.println("Cantidad de Auspiciantes: " + feria.getAuspiciantes().size() + "\n");
             }
-            System.out.println("Menu de Opciones:");
+            System.out.println("\nMenu de Opciones:");
             System.out.println("""
                     1. Ver informacion de feria
                     2. Registrar feria
@@ -43,7 +43,7 @@ public class MenuFerias {
                     break;
 
                 case '4':
-
+                    emprendedoresFeria(sc);
                     break;
 
                 case '5':
@@ -59,74 +59,76 @@ public class MenuFerias {
     }
 
     private static void informacionFeria(Scanner sc) {
-        System.out.println("Ingrese codigo de Feria");
+        System.out.println("\nIngrese codigo de Feria:");
         int codigo = sc.nextInt();
         sc.nextLine();
         Feria feria = Feria.buscarFeria(codigo, App.listaFerias);
         if (feria != null) {
 
-            System.out.println("Nombre: " + feria.getNombre());
+            System.out.println("\nNombre: " + feria.getNombre());
             System.out.println("Lugar: " + feria.getLugar());
-            System.out.println("Fecha de Inicio:" + feria.getFechaInicio().toString());
-            System.out.println("Feha de Fin:" + feria.getFechaFin().toString());
-            System.out.println("Horario:" + feria.getHorario());
+            System.out.println("Fecha de Inicio: " + feria.getFechaInicio().toString());
+            System.out.println("Feha de Fin: " + feria.getFechaFin().toString());
+            System.out.println("Horario :" + feria.getHorario());
             System.out.println("Lista de Auspiciantes:");
             for (AuspicianteEnFeria auspicianteEnFeria : feria.getAuspiciantes()) {
                 System.out.println(auspicianteEnFeria.getAuspiciante().getNombre());
             }
-            System.out.println("Cantidad de Stands en cada Seccion:");
+            System.out.println("\nCantidad de Stands en cada Seccion:");
             for (Seccion seccion : feria.getSecciones()) {
-                System.out.println("Seccion" + seccion.getId() + ": " + seccion.getLstStands().size());
+                System.out.println("Seccion " + seccion.getId() + ": " + seccion.getLstStands().size());
             }
         } else {
             System.out.println("No existe una feria con ese codigo");
         }
-
+        System.out.println("\nRegresando al menu de administracion de ferias...");
     }
 
     private static void registrarFeria(Scanner sc) {
-        System.out.println("Ingrese los siguientes datos");
+        System.out.println("\nIngrese los siguientes datos");
 
-        System.out.println("Nombre:");
+        System.out.println("\nNombre:");
         String nombre = sc.nextLine();
-        System.out.println("Descripcion");
+        System.out.println("\nDescripcion:");
         String descripcion = sc.nextLine();
-        System.out.println("Lugar");
+        System.out.println("\nLugar:");
         String lugar = sc.nextLine();
-        System.out.println("Fecha de Inicio (formato: yyyy-mm-dd)");
+        System.out.println("\nFecha de Inicio (formato: yyyy-mm-dd):");
         String fechaInicio = sc.nextLine();
-        System.out.println("Fecha de Fin (formato yyyy-mm-dd)");
+        System.out.println("\nFecha de Fin (formato yyyy-mm-dd):");
         String fechaFin = sc.nextLine();
-        System.out.println("Horario (formato 24h, hh:mm-hh:mm)");
+        System.out.println("\nHorario (formato 24h, hh:mm-hh:mm):");
         String horario = sc.nextLine();
 
         Feria feria = new Feria(App.listaFerias.size() + 1, nombre, descripcion, lugar, fechaInicio, fechaFin, horario);
 
-        System.out.println("Ingrese la cantidad de stands para cada seccion:");
-        System.out.println("Seccion 1:");
+        System.out.println("\nIngrese la cantidad de stands para cada seccion:");
+        System.out.println("\nSeccion 1:");
         int num1 = sc.nextInt();
         sc.nextLine();
-        System.out.println("Seccion 2:");
+        System.out.println("\nSeccion 2:");
         int num2 = sc.nextInt();
         sc.nextLine();
-        System.out.println("Seccion 3:");
+        System.out.println("\nSeccion 3:");
         int num3 = sc.nextInt();
         sc.nextLine();
-        System.out.println("Seccion 4:");
+        System.out.println("\nSeccion 4:");
         int num4 = sc.nextInt();
         sc.nextLine();
 
         feria.asignarNumeroStands(num1, num2, num3, num4);
 
         App.listaFerias.add(feria);
+        System.out.println("\nRegresando al menu de administracion de ferias...");
+
     }
 
     private static void editarFeria(Scanner sc) {
 
         String opcionEdit;
-        System.out.println("\nEditar Feria:");
+        System.out.println("\nEDITAR FERIA");
 
-        System.out.println("\nIngrese el codigo de la feria");
+        System.out.println("\nIngrese el codigo de la feria:");
         int codigo = sc.nextInt();
         sc.nextLine();
         while (Feria.buscarFeria(codigo, App.listaFerias) == null
@@ -140,10 +142,10 @@ public class MenuFerias {
 
         Feria feria = Feria.buscarFeria(codigo, App.listaFerias);
 
-        System.out.println("Informacion actual de la feria");
+        System.out.println("\nInformacion actual de la feria");
         System.out.println(feria);
 
-        System.out.println("¿Que campo desea editar?");
+        System.out.println("\n¿Que campo desea editar?");
         System.out.println("1. Nombre");
         System.out.println("2. Descripcion");
         System.out.println("3. Lugar");
@@ -155,7 +157,7 @@ public class MenuFerias {
         System.out.println("9. Volver al Menu de Feria");
 
         do {
-            System.out.print("Ingrese numero de opcion: ");
+            System.out.print("\nIngrese numero de opcion: ");
             opcionEdit = sc.nextLine() + " ";
             switch (opcionEdit.charAt(0)) {
                 case '1' -> {
@@ -229,41 +231,41 @@ public class MenuFerias {
                         System.out.println("\nIngrese numero de Opcion:");
                         Auspiciante auspiciante = auspicianteFeria.getAuspiciante();
                         do {
-                            System.out.print("Ingrese numero de opcion: ");
+                            System.out.print("\nIngrese numero de opcion: ");
                             opcionEdit = sc.nextLine() + " ";
                             switch (opcionEdit) {
                                 case "1" -> {
-                                    System.out.println("Ingrese el nuevo nombre");
+                                    System.out.println("\nIngrese el nuevo nombre");
                                     String nuevoNombre = sc.nextLine();
                                     auspiciante.setNombre(nuevoNombre);
                                     System.out.println("Nombre modificado con exito.");
                                 }
                                 case "2" -> {
-                                    System.out.println("Ingrese el nuevo telefono");
+                                    System.out.println("\nIngrese el nuevo telefono");
                                     String nuevoTelefono = sc.nextLine();
                                     auspiciante.setTelefono(nuevoTelefono);
                                     System.out.println("Telefono modificado con exito.");
                                 }
                                 case "3" -> {
-                                    System.out.println("Ingrese el nuevo Email");
+                                    System.out.println("\nIngrese el nuevo Email");
                                     String nuevoEmail = sc.nextLine();
                                     auspiciante.setEmail(nuevoEmail);
                                     System.out.println("Email modificado con exito.");
                                 }
                                 case "4" -> {
-                                    System.out.println("Ingrese la nueva direccion");
+                                    System.out.println("\nIngrese la nueva direccion");
                                     String nuevaDir = sc.nextLine();
                                     auspiciante.setDireccion(nuevaDir);
                                     System.out.println("Direccion modificada con exito.");
                                 }
                                 case "5" -> {
-                                    System.out.println("Ingrese el nuevo sitio web");
+                                    System.out.println("\nIngrese el nuevo sitio web");
                                     String nuevoSitio = sc.nextLine();
                                     auspiciante.setTelefono(nuevoSitio);
                                     System.out.println("Sitio web modificado con exito.");
                                 }
                                 case "6" -> {
-                                    System.out.println("Ingrese el nombre de la nueva persona responsable");
+                                    System.out.println("\nIngrese el nombre de la nueva persona responsable");
                                     String nuevoResponsable = sc.nextLine();
                                     auspiciante.setPersonaResponsable(nuevoResponsable);
                                     System.out.println("Nombre de persona responsable modificado con exito.");
@@ -550,6 +552,22 @@ public class MenuFerias {
                     System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 9.");
             }
         } while (opcionEdit.charAt(0) != '9');
+
+    }
+
+    private static void emprendedoresFeria(Scanner sc) {
+        System.out.println("\nIngrese codigo de Feria");
+        int codigo = sc.nextInt();
+        sc.nextLine();
+        Feria feria = Feria.buscarFeria(codigo, App.listaFerias);
+        if (feria != null) {
+            System.out.println("\nLista de Emprendedores:");
+            for (Emprendedor emprendedor : feria.getEmprendedores()) {
+                System.out.println(emprendedor.toString());
+            }
+        } else {
+            System.out.println("\nNo existe una feria con ese codigo");
+        }
     }
 
 }
