@@ -1,5 +1,7 @@
 package espol.poo.app;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import espol.poo.models.*;
@@ -13,7 +15,7 @@ public class MenuFerias {
             for (Feria feria : App.listaFerias) {
                 System.out.println("Codigo: " + feria.getCodigo());
                 System.out.println("Nombre: " + feria.getNombre());
-                System.out.println("Fecha de Inicio: " + feria.getFechaInicio());
+                System.out.println("Fecha de Inicio: " + feria.getFechaInicio().toString());
                 System.out.println("Lugar: " + feria.getLugar());
                 System.out.println("Cantidad de Auspiciantes: " + feria.getAuspiciantes().size());
             }
@@ -63,8 +65,8 @@ public class MenuFerias {
 
             System.out.println("Nombre: " + feria.getNombre());
             System.out.println("Lugar: " + feria.getLugar());
-            System.out.println("Fecha de Inicio:" + feria.getFechaInicio());
-            System.out.println("Feha de Fin:" + feria.getFechaFin());
+            System.out.println("Fecha de Inicio:" + feria.getFechaInicio().toString());
+            System.out.println("Feha de Fin:" + feria.getFechaFin().toString());
             System.out.println("Horario:" + feria.getHorario());
             System.out.println("Lista de Auspiciantes:");
             for (AuspicianteEnFeria auspicianteEnFeria : feria.getAuspiciantes()) {
@@ -89,124 +91,132 @@ public class MenuFerias {
         String descripcion = sc.nextLine();
         System.out.println("Lugar");
         String lugar = sc.nextLine();
-        System.out.println("Fecha de Inicio");
+        System.out.println("Fecha de Inicio (formato: yyyy-mm-dd)");
         String fechaInicio = sc.nextLine();
-        System.out.println("Fecha de Fin");
+        System.out.println("Fecha de Fin (formato yyyy-mm-dd)");
         String fechaFin = sc.nextLine();
-        System.out.println("Horario");
+        System.out.println("Horario (formato 24h, hh:mm-hh:mm)");
         String horario = sc.nextLine();
 
-        App.listaFerias.add(new Feria(nombre, descripcion, lugar, fechaInicio, fechaFin, horario));
+        Feria feria = new Feria(App.listaFerias.size() + 1, nombre, descripcion, lugar, fechaInicio, fechaFin, horario);
+
+        System.out.println("Ingrese la cantidad de stands para cada seccion:");
+        System.out.println("Seccion 1:");
+        int num1 = sc.nextInt();
+        System.out.println("Seccion 2:");
+        int num2 = sc.nextInt();
+        System.out.println("Seccion 3:");
+        int num3 = sc.nextInt();
+        System.out.println("Seccion 4:");
+        int num4 = sc.nextInt();
+
+        feria.asignarNumeroStands(num1, num2, num3, num4);
+
+        App.listaFerias.add(feria);
     }
 
     private static void editarFeria(Scanner sc) {
-        int codigo;
+
         String opcionEdit;
-        System.out.println("\nEditar Auspiciante:\n");
-        do {
-            System.out.println("Ingrese el codigo de la feria");
+        System.out.println("\nEditar Feria:");
+
+        System.out.println("\nIngrese el codigo de la feria");
+        int codigo = sc.nextInt();
+        while (Feria.buscarFeria(codigo, App.listaFerias) == null
+                || LocalDate.now().isAfter(Feria.buscarFeria(codigo, App.listaFerias).getFechaInicio())) {
+
+            System.out.println("\nEl codigo no pertenece a ninguna feria registrada");
+            System.out.println("\nIngrese el codigo de la feria");
             codigo = sc.nextInt();
-            if (Feria.buscarFeria(codigo, App.listaFerias) == null) {
-                System.out.println("El RUC o cedula ingresado no pertenese a ningun auspiciante registrado");
-            }
-        } while (Feria.buscarFeria(codigo, App.listaFerias) == null);
+        }
+
         Feria feria = Feria.buscarFeria(codigo, App.listaFerias);
+
         System.out.println("Informacion actual de la feria");
-        System.out.println(App.buscarPersona(ruc));
+        System.out.println(feria);
+
         System.out.println("¿Que campo desea editar?");
         System.out.println("1. Nombre");
-        System.out.println("2. Telefono");
-        System.out.println("3. Email");
-        System.out.println("4. Direccion");
-        System.out.println("5. Sitio Web");
-        System.out.println("6. Persona Responsable");
-        System.out.println("7. Redes Sociales");
-        System.out.println("8. Lista de Sectores");
-        System.out.println("9. Volver a Menu Auspiciantes");
+        System.out.println("2. Descripcion");
+        System.out.println("3. Lugar");
+        System.out.println("4. Fecha de Inicio");
+        System.out.println("5. Fecha de Fin");
+        System.out.println("6. Horario");
+        System.out.println("7. Lista de Auspiciantes");
+        System.out.println("8. Lista de Emprendedores");
+        System.out.println("9. Volver al Menu de Feria");
 
         do {
             System.out.print("Ingrese numero de opcion: ");
             opcionEdit = sc.nextLine() + " ";
             switch (opcionEdit.charAt(0)) {
                 case '1' -> {
-                    System.out.println("Ingrese el nuevo nombre");
-                    String nuevoNombre = sc.nextLine();
-                    App.buscarPersona(ruc).setNombre(nuevoNombre);
+                    System.out.println("\nIngrese el nuevo nombre");
+                    String nombre = sc.nextLine();
+                    feria.setNombre(nombre);
                     System.out.println("Nombre modificado con exito.");
                 }
                 case '2' -> {
-                    System.out.println("Ingrese el nuevo telefono");
-                    String nuevoTelefono = sc.nextLine();
-                    App.buscarPersona(ruc).setTelefono(nuevoTelefono);
-                    System.out.println("Telefono modificado con exito.");
+                    System.out.println("\nIngrese la nueva descripcion:");
+                    String descripcion = sc.nextLine();
+                    feria.setDescripcion(descripcion);
+                    System.out.println("Descripcion modificada con exito.");
                 }
                 case '3' -> {
-                    System.out.println("Ingrese el nuevo Email");
-                    String nuevoEmail = sc.nextLine();
-                    App.buscarPersona(ruc).setEmail(nuevoEmail);
-                    System.out.println("Email modificado con exito.");
+                    System.out.println("\nIngrese el nuevo Lugar");
+                    String lugar = sc.nextLine();
+                    feria.setLugar(lugar);
+                    System.out.println("Lugar modificado con exito.");
                 }
                 case '4' -> {
-                    System.out.println("Ingrese la nueva direccion");
-                    String nuevaDir = sc.nextLine();
-                    App.buscarPersona(ruc).setDireccion(nuevaDir);
-                    System.out.println("Direccion modificada con exito.");
+                    System.out.println("\nIngrese la nueva fecha de inicio (formato yyyy-mm-dd)");
+                    String fechaInicio = sc.nextLine();
+                    feria.setFechaInicio(fechaInicio);
+                    System.out.println("Fecha de Inicio modificada con exito.");
                 }
                 case '5' -> {
-                    System.out.println("Ingrese el nuevo sitio web");
-                    String nuevoSitio = sc.nextLine();
-                    App.buscarPersona(ruc).setTelefono(nuevoSitio);
-                    System.out.println("Sitio web modificado con exito.");
+                    System.out.println("\nIngrese la nueva fecha de fin (formato yyyy-mm-dd)");
+                    String fechaFin = sc.nextLine();
+                    feria.setFechaFin(fechaFin);
+                    System.out.println("Fecha de Fin modificado con exito.");
                 }
                 case '6' -> {
-                    System.out.println("Ingrese el nombre de la nueva persona responsable");
-                    String nuevoResponsable = sc.nextLine();
-                    App.buscarPersona(ruc).setPersonaResponsable(nuevoResponsable);
-                    System.out.println("Nombre de persona responsable modificado con exito.");
+                    System.out.println("\nIngrese el nuevo horario (formato 24h, hh:mm-hh:mm)");
+                    String horario = sc.nextLine();
+                    feria.setHorario(horario);
+                    System.out.println("Horario modificado con exito.");
                 }
                 case '7' -> {
-                    if (App.buscarPersona(ruc).getRedesSociales().isEmpty()) {
-                        System.out.println("\nEste emprendedor no tiene niguna red social\n");
+                    if (feria.getAuspiciantes() == null) {
+                        System.out.println("\nEsta feria no tiene auspiciantes");
                     } else {
-                        System.out.println("Lista de redes sociales del auspiciante");
-                        System.out.println(App.buscarPersona(ruc).getRedesSociales());
-                        int ind;
-                        do {
-                            System.out.println("Escriba el nombre de la red social que de desea editar");
-                            String tipo = sc.nextLine();
-                            TipoRedSocial red = TipoRedSocial.Twitter;
-                            if (tipo.equals("Twitter")) {
-                                red = TipoRedSocial.Twitter;
-                            } else if (tipo.equals("Facebook")) {
-                                red = TipoRedSocial.Facebook;
-                            } else if (tipo.equals("Instagram")) {
-                                red = TipoRedSocial.Instagram;
-                            } else if (tipo.equals("Youtube")) {
-                                red = TipoRedSocial.Youtube;
-                            } else if (tipo.equals("TikTok")) {
-                                red = TipoRedSocial.TikTok;
-                            } else if (tipo.equals("LinkedIn")) {
-                                red = TipoRedSocial.LinkedIn;
-                            } else if (tipo.equals("Pinterest")) {
-                                red = TipoRedSocial.Pinterest;
-                            } else {
-                            }
-                            ind = App.buscarPersona(ruc).getRedesSociales().indexOf(new RedSocial(red, "", ""));
-                            if (ind == -1) {
-                                System.out.println("Por favor escriba un nombre valido");
-                            }
-                        } while (ind == -1);
-                        System.out.println("Escriba el nuevo nombre de usuario");
-                        String nuevoNombre = sc.nextLine();
-                        System.out.println("Escriba el nuevo link del usuario");
-                        String nuevoLink = sc.nextLine();
-                        App.buscarPersona(ruc).getRedesSociales().get(ind).setUsuario(nuevoNombre);
-                        App.buscarPersona(ruc).getRedesSociales().get(ind).setEnlace(nuevoLink);
-                        System.out.println("Red social modificada con exito");
+                        ArrayList<AuspicianteEnFeria> auspiciantesFeria = feria.getAuspiciantes();
+                        System.out.println("\nEditar Auspiciantes:");
+                        for (int i = 0; i < auspiciantesFeria.size(); i++) {
+                            System.out.println("\nAuspciante" + i + 1);
+                            System.out.println(auspiciantesFeria.get(i).toString());
+                        }
+                        System.out.println("Ingrese numero de auspiciante a editar:");
+                        int index = sc.nextInt();
+                        AuspicianteEnFeria auspicianteFeria = auspiciantesFeria.get(index - 1);
+                        System.out.println("\nMenu de Opciones:");
+                        System.out.println("1. Nombre de Auspiciante");
+                        System.out.println("2. Telefono de Auspiciante");
+                        System.out.println("3. Email de Auspiciante");
+                        System.out.println("4. Direccion de Auspiciante");
+                        System.out.println("5. Sitio Web de Auspiciante");
+                        System.out.println("6. Persona Responsable de Auspiciante");
+                        System.out.println("7. Redes Sociales de Auspiciante");
+                        System.out.println("8. Lista de Sectores de Auspiciante");
+                        System.out.println("10. Descripcion de Auspiciante");
+                        System.out.println("11. Tiene Stand o no");
+                        System.out.println("12. Volver a Menu de Editar Feria");
+                        System.out.println("\nIngrese numero de Opcion:");
                     }
+
                 }
                 case '8' -> {
-                    Auspiciante a = (Auspiciante) App.buscarPersona(ruc);
+                    Auspiciante a = null;
                     a.borrarSectores();
                     System.out.println(
                             "Se ha borrado la lista de sectores del auspiciante, por favor ingrese nuevamente los sectores: ");

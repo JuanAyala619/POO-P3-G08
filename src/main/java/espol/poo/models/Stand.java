@@ -1,44 +1,35 @@
 package espol.poo.models;
 
+import java.time.LocalDate;
+
 public class Stand {
-  private int id;
   private String codigo;
-  private String fechaAsignacion;
+  private LocalDate fechaAsignacion;
   private Persona personaAsignada;
-  private boolean reservado;
 
-  public Stand(int id, String codigo, String fechaAsignacion,
-      boolean reservado) {
-    this.id = id;
+  public Stand(String codigo) {
     this.codigo = codigo;
-    this.fechaAsignacion = fechaAsignacion;
-    this.reservado = reservado;
-  }
-
-  public int getId() {
-    return this.id;
   }
 
   public String getCodigo() {
     return this.codigo;
   }
 
-  public String getFechaAsignacion() {
+  public LocalDate getFechaAsignacion() {
     return this.fechaAsignacion;
+  }
+
+  public void setFechaAsignacion(LocalDate fechaAsignacion) {
+    this.fechaAsignacion = fechaAsignacion;
   }
 
   public Persona getPersonaAsignada() {
     return this.personaAsignada;
   }
 
-  public boolean getReservado() {
-    return this.reservado;
-  }
-
   public String toString() {
-    return "Stand: Id - " + this.id + ", Codigo - " + this.codigo + ", Fecha Asignada - " + this.fechaAsignacion
-        + ", Persona Asignada - " + this.personaAsignada
-        + ", Reservado - " + this.reservado;
+    return "\nStand:" + "\nCodigo: " + this.codigo + "\nFecha Asignada: " + this.fechaAsignacion
+        + "\nPersona Asignada: " + ((this.personaAsignada == null) ? "Ninguna" : personaAsignada.toString());
 
   }
 }

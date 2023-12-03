@@ -1,5 +1,6 @@
 package espol.poo.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Feria {
@@ -7,8 +8,8 @@ public class Feria {
     private String nombre;
     private String descripcion;
     private String lugar;
-    private String fechaInicio;
-    private String fechaFin;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private String horario;
     private ArrayList<AuspicianteEnFeria> auspiciantes;
     private ArrayList<Emprendedor> emprendedores;
@@ -16,10 +17,6 @@ public class Feria {
 
     public int getCodigo() {
         return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -46,20 +43,20 @@ public class Feria {
         this.lugar = lugar;
     }
 
-    public String getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
     public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
+        this.fechaInicio = LocalDate.parse(fechaInicio);
     }
 
-    public String getFechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin;
     }
 
     public void setFechaFin(String fechaFin) {
-        this.fechaFin = fechaFin;
+        this.fechaFin = LocalDate.parse(fechaFin);
     }
 
     public String getHorario() {
@@ -94,12 +91,14 @@ public class Feria {
         this.secciones = secciones;
     }
 
-    public Feria(String nombre, String descripcion, String lugar, String fechaInicio, String fechaFin, String horario) {
+    public Feria(int codigo, String nombre, String descripcion, String lugar, String fechaInicio, String fechaFin,
+            String horario) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.lugar = lugar;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = LocalDate.parse(fechaInicio);
+        this.fechaFin = LocalDate.parse(fechaFin);
         this.horario = horario;
         for (int i = 0; i < secciones.length; i++) {
             secciones[i] = new Seccion(i + 1);
@@ -109,7 +108,8 @@ public class Feria {
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append("\nNombre: " + nombre + "\nDescripcion: " + descripcion + "\nLugar: " + lugar
-                + "\nFecha de Inicio: " + fechaInicio + "\nFecha de Fin: " + fechaFin + "\nHorario" + horario
+                + "\nFecha de Inicio: " + fechaInicio.toString() + "\nFecha de Fin: " + fechaFin.toString()
+                + "\nHorario" + horario
                 + "\nAusipciantes:");
         for (AuspicianteEnFeria auspiciante : auspiciantes) {
             str.append(auspiciante.toString());
@@ -130,7 +130,7 @@ public class Feria {
         for (Seccion seccion : secciones) {
             str.append("\nSeccion " + seccion.getId() + "\n");
             for (Stand stand : seccion.getLstStands()) {
-                String mensaje = stand.getReservado() ? "*" : "";
+                String mensaje = (stand.getPersonaAsignada() != null) ? "*" : "";
                 str.append("[" + stand.getCodigo() + mensaje + "]");
             }
         }
@@ -147,6 +147,16 @@ public class Feria {
 
     public void reservarStand(Persona persona) {
 
+    }
+
+    public void asignarNumeroStands(int st1, int st2, int st3, int st4) {
+        String[] letrasCodigo = { "A", "B", "C", "D" };
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < st1; j++) {
+                String codigo = letrasCodigo[i] + (j+1);
+                secciones[i].addStand(codigo);
+            }
+        }
     }
 
     public String informacionStand(String codigoStand) {

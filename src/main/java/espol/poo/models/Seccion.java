@@ -13,6 +13,7 @@ public class Seccion {
 
   public Seccion(int id) {
     this.id = id;
+    this.lstStands = new ArrayList<>();
   }
 
   public int getId() {
@@ -21,6 +22,10 @@ public class Seccion {
 
   public ArrayList<Stand> getLstStands() {
     return this.lstStands;
+  }
+
+  public void addStand(String codigo){
+    this.lstStands.add(new Stand(codigo));
   }
 
   public String toString() {
