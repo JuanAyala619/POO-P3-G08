@@ -14,6 +14,7 @@ public class App {
         String opcion;
         agregarEmprendedores(); // Se agregan emprendedores por defecto
         agregarAuspiciantes(); // Se agregan auspiciantes por defecto
+        agregarFerias();
         System.out.println("Bienvenido al sistema de administracion de ferias");
         do {
             System.out.println("Menu Principal");

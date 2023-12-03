@@ -47,6 +47,7 @@ public class MenuFerias {
                     break;
 
                 case '5':
+                    System.out.println("\nVolviendo al menu principal");
                     break;
 
                 default:
@@ -60,6 +61,7 @@ public class MenuFerias {
     private static void informacionFeria(Scanner sc) {
         System.out.println("Ingrese codigo de Feria");
         int codigo = sc.nextInt();
+        sc.nextLine();
         Feria feria = Feria.buscarFeria(codigo, App.listaFerias);
         if (feria != null) {
 
@@ -103,12 +105,16 @@ public class MenuFerias {
         System.out.println("Ingrese la cantidad de stands para cada seccion:");
         System.out.println("Seccion 1:");
         int num1 = sc.nextInt();
+        sc.nextLine();
         System.out.println("Seccion 2:");
         int num2 = sc.nextInt();
+        sc.nextLine();
         System.out.println("Seccion 3:");
         int num3 = sc.nextInt();
+        sc.nextLine();
         System.out.println("Seccion 4:");
         int num4 = sc.nextInt();
+        sc.nextLine();
 
         feria.asignarNumeroStands(num1, num2, num3, num4);
 
@@ -122,12 +128,14 @@ public class MenuFerias {
 
         System.out.println("\nIngrese el codigo de la feria");
         int codigo = sc.nextInt();
+        sc.nextLine();
         while (Feria.buscarFeria(codigo, App.listaFerias) == null
                 || LocalDate.now().isAfter(Feria.buscarFeria(codigo, App.listaFerias).getFechaInicio())) {
 
             System.out.println("\nEl codigo no pertenece a ninguna feria registrada");
             System.out.println("\nIngrese el codigo de la feria");
             codigo = sc.nextInt();
+            sc.nextLine();
         }
 
         Feria feria = Feria.buscarFeria(codigo, App.listaFerias);
@@ -199,6 +207,7 @@ public class MenuFerias {
 
                         System.out.println("\nIngrese numero de auspiciante a editar:");
                         int index = sc.nextInt();
+                        sc.nextLine();
                         AuspicianteEnFeria auspicianteFeria = auspiciantesFeria.get(index - 1);
 
                         System.out.println("\nAuspiciante escogido:");
@@ -386,6 +395,7 @@ public class MenuFerias {
 
                         System.out.println("\nIngrese numero de emprendedor a editar:");
                         int index = sc.nextInt();
+                        sc.nextLine();
                         Emprendedor emprendedor = emprendedores.get(index - 1);
 
                         System.out.println("\nEmprendedor escogido:");

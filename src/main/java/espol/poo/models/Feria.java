@@ -100,9 +100,12 @@ public class Feria {
         this.fechaInicio = LocalDate.parse(fechaInicio);
         this.fechaFin = LocalDate.parse(fechaFin);
         this.horario = horario;
-        for (int i = 0; i < secciones.length; i++) {
+        this.secciones = new Seccion[4];
+        for (int i = 0; i < 4; i++) {
             secciones[i] = new Seccion(i + 1);
         }
+        this.auspiciantes = new ArrayList<>();
+        this.emprendedores = new ArrayList<>();
     }
 
     public String toString() {

@@ -24,7 +24,7 @@ public class MenuStands {
         do {
             System.out.println("Distribucion de stands:");
             // For para recorrer la lista de emprendedores y mostrar sus datos
-            feria.distribucionStands();
+            System.out.println(feria.distribucionStands());
             System.out.println("Menu de administracion de stands");
             System.out.println("""
                     1. Reservar stand
@@ -53,7 +53,6 @@ public class MenuStands {
         do {
             System.out.println("Ingrese el codigo del stand que desea reservar");
             codigo = sc.nextLine();
-            sc.nextLine();
             if (feria.informacionStand(codigo) == null) {
                 System.out.println("El codigo ingresado no corresponde con ningun stand");
             }
@@ -94,7 +93,6 @@ public class MenuStands {
         do {
             System.out.println("Ingrese el codigo del stand que desea revisar");
             codigo = sc.nextLine();
-            sc.nextLine();
             if (feria.informacionStand(codigo) == null) {
                 System.out.println("El codigo ingresado no corresponde con ningun stand");
             }
