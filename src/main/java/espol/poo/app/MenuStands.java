@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import espol.poo.models.*;
 
-public class MenuStands {
-    static void menu(Scanner sc) {
+public class MenuStands implements InterfaceMenu {
+    @Override
+    public void menu(Scanner sc) {
         String opcion; // Guarda la opcion del menu
         int codigoFeria;
         Feria feria;

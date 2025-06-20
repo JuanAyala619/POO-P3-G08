@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 import espol.poo.models.*;
 
-public class MenuFerias {
-    static void menu(Scanner sc) {
+public class MenuFerias implements InterfaceMenu {
+    @Override
+    public void menu(Scanner sc) {
         String opcion;
         do {
             System.out.println("\nADMINISTRACION DE FERIAS");

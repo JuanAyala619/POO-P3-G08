@@ -3,9 +3,10 @@ package espol.poo.app;
 import espol.poo.models.*;
 import java.util.Scanner;
 
-public class MenuAuspiciantes {
+public class MenuAuspiciantes implements InterfaceMenu{
 
-    static void menu(Scanner sc) {
+    @Override
+    public void menu(Scanner sc) {
         System.out.println("\nADMINISTRACION DE AUSPICIANTES");
         String opcion = "";
         do {

@@ -10,7 +10,7 @@ public abstract class Persona {
     private String direccion;
     private String sitioWeb;
     private String personaResponsable;
-    private ArrayList<RedSocial> redesSociales;
+
 
     // Constructor con todos los parámetros menos redesSociales
     public Persona(String ruc, String nombre, String telefono, String email,
@@ -22,28 +22,6 @@ public abstract class Persona {
         this.direccion = direccion;
         this.sitioWeb = sitioWeb;
         this.personaResponsable = personaResponsable;
-        redesSociales = new ArrayList<RedSocial>();
-    }
-
-    public void agregarRedSocial(String tipo, String usuario, String enlace) {
-        TipoRedSocial red = TipoRedSocial.Twitter;
-        if (tipo.equals("Twitter")) {
-            red = TipoRedSocial.Twitter;
-        } else if (tipo.equals("Facebook")) {
-            red = TipoRedSocial.Facebook;
-        } else if (tipo.equals("Instagram")) {
-            red = TipoRedSocial.Instagram;
-        } else if (tipo.equals("Youtube")) {
-            red = TipoRedSocial.Youtube;
-        } else if (tipo.equals("TikTok")) {
-            red = TipoRedSocial.TikTok;
-        } else if (tipo.equals("LinkedIn")) {
-            red = TipoRedSocial.LinkedIn;
-        } else if (tipo.equals("Pinterest")) {
-            red = TipoRedSocial.Pinterest;
-        } else {
-        }
-        redesSociales.add(new RedSocial(red, usuario, enlace));
     }
 
     // Metodo toString
@@ -55,8 +33,7 @@ public abstract class Persona {
                 "\nEmail: " + email +
                 "\nDireccion: " + direccion +
                 "\nSitioWeb: " + sitioWeb +
-                "\nPersonaResponsable: " + personaResponsable +
-                "\nRedes Sociales: " + redesSociales;
+                "\nPersonaResponsable: " + personaResponsable;
     }
 
     // Getter y Setter para 'ruc'
@@ -120,14 +97,5 @@ public abstract class Persona {
 
     public void setPersonaResponsable(String personaResponsable) {
         this.personaResponsable = personaResponsable;
-    }
-
-    // Getter y Setter para 'redesSociales'
-    public ArrayList<RedSocial> getRedesSociales() {
-        return redesSociales;
-    }
-
-    public void setRedesSociales(ArrayList<RedSocial> redesSociales) {
-        this.redesSociales = redesSociales;
     }
 }

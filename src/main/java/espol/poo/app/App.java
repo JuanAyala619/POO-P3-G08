@@ -27,16 +27,13 @@ public class App {
             System.out.print("\nIngrese el numero de opcion: ");
             opcion = sc.nextLine();
             System.out.println();
+            TipoMenu tipo = TipoMenu.desdeCodigo(opcion);
+            if (tipo != null) {
+                tipo.getMenu().menu(sc);
+            }
+
 
             switch (opcion.charAt(0)) {
-                case '1' -> // Código para la Administracion de ferias
-                    MenuFerias.menu(sc);
-                case '2' -> // Código para la Administracion de emprendedores
-                    MenuEmprendedores.menu(sc);
-                case '3' -> // Código para la Administracion de auspiciantes
-                    MenuAuspiciantes.menu(sc);
-                case '4' -> // Código para la Administracion de stands
-                    MenuStands.menu(sc);
                 case '5' -> // Salir del bucle
                     System.out.println("Saliendo del sistema de administracion de ferias.");
                 default -> System.out.println("Opción no válida. Por favor, ingresa un número del 1 al 5.");

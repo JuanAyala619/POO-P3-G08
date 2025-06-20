@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Stand {
   private String codigo;
   private LocalDate fechaAsignacion;
-  private Persona personaAsignada;
+  private AsignadaAStand personaAsignada;
 
   public Stand(String codigo) {
     this.codigo = codigo;
@@ -23,17 +23,17 @@ public class Stand {
     this.fechaAsignacion = fechaAsignacion;
   }
 
-  public Persona getPersonaAsignada() {
+  public AsignadaAStand getPersonaAsignada() {
     return this.personaAsignada;
   }
 
-  public void setPersonaAsignada(Persona personaAsignada) {
+  public void setPersonaAsignada(AsignadaAStand personaAsignada) {
     this.personaAsignada = personaAsignada;
   }
 
   public String toString() {
     return "\nStand:" + "\nCodigo: " + this.codigo + "\nFecha Asignada: " + this.fechaAsignacion
-        + "\nPersona Asignada: " + ((this.personaAsignada == null) ? "Ninguna" : personaAsignada.toString());
+        + "\nPersona Asignada: " + ((this.personaAsignada == null) ? "Ninguna" : personaAsignada.getNombre());
 
   }
 

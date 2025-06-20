@@ -3,8 +3,9 @@ package espol.poo.app;
 import java.util.Scanner;
 import espol.poo.models.*;
 
-public class MenuEmprendedores {
-    static void menu(Scanner sc) {
+public class MenuEmprendedores implements InterfaceMenu{
+    @Override
+    public void menu(Scanner sc) {
         String opcion; // Guarda la opcion del menu
         System.out.println("\nADMINISTRACION DE EMPRENDEDORES");
         // Blucle del menu

@@ -128,56 +128,12 @@ public class Feria {
         this.auspiciantes.add(new AuspicianteEnFeria(auspiciante, descripcion, tieneStand));
     }
 
-    public String distribucionStands() {
-        StringBuilder str = new StringBuilder();
-        for (Seccion seccion : secciones) {
-            str.append("\nSeccion " + seccion.getId() + "\n");
-            for (Stand stand : seccion.getLstStands()) {
-                String mensaje = (stand.getPersonaAsignada() != null) ? "*" : "";
-                str.append("[" + stand.getCodigo() + mensaje + "]");
-            }
-        }
-        return str.toString();
-    }
-
     public String consultarEmprendedores() {
         StringBuilder str = new StringBuilder();
         for (Emprendedor emprendedor : emprendedores) {
             str.append("\n" + emprendedor.toString());
         }
         return str.toString();
-    }
-
-    public void reservarStand(String codigoStand, Persona persona, LocalDate date) {
-        for (Seccion seccion : secciones) {
-            for (Stand stand : seccion.getLstStands()) {
-                if (stand.getCodigo().equals(codigoStand)) {
-                    stand.setFechaAsignacion(date);
-                    stand.setPersonaAsignada(persona);
-                }
-            }
-        }
-    }
-
-    public void asignarNumeroStands(int st1, int st2, int st3, int st4) {
-        String[] letrasCodigo = { "A", "B", "C", "D" };
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < st1; j++) {
-                String codigo = letrasCodigo[i] + (j + 1);
-                secciones[i].addStand(codigo);
-            }
-        }
-    }
-
-    public String informacionStand(String codigoStand) {
-        for (Seccion seccion : this.secciones) {
-            for (Stand stand : seccion.getLstStands()) {
-                if (stand.getCodigo().equals(codigoStand)) {
-                    return stand.toString();
-                }
-            }
-        }
-        return null;
     }
 
     public static Feria buscarFeria(int codigo, ArrayList<Feria> ferias) {
